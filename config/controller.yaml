@@ -1,0 +1,19 @@
+# config/controller.yaml
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  te_queue_name: "policy_queue"
+
+te_engine:
+  # 算法轮询周期 (毫秒)
+  polling_interval_ms: 500
+  # 拥塞阈值 (百分比)，超过此值触发集中式绕路计算
+  congestion_threshold_percent: 80.0
+  # 最大 SID 深度限制 (硬件限制)
+  max_sid_depth: 16
+  # 星历预测提前量 (秒) - 预留字段
+  ephemeris_lookahead_sec: 5
+
+network:
+  # 卫星节点的 IPv6 SID 前缀 (用于生成 SRv6 报文)
+  srv6_locator_prefix: "fd00:"
