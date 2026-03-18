@@ -1,0 +1,5 @@
+redis==5.0.1
+exabgp==4.2.21cvxpy==1.4.2
+networkx==3.2.1
+numpy==1.26.4
+scipy==1.12.0
