@@ -2,6 +2,7 @@ import time
 import json
 import yaml
 import redis
+import hashlib
 import networkx as nx
 import cvxpy as cp
 import numpy as np
@@ -22,6 +23,54 @@ class LyapunovSolver:
         self.rho = l_cfg['capacity_rho']
         self.classes = l_cfg['traffic_classes']
         self.sid_prefix = self.config['network']['srv6_locator_prefix']
+        self.policy_state_key = l_cfg.get('policy_state_key', 'te:policy:last_signature')
+        self.max_policy_queue_len = int(l_cfg.get('max_policy_queue_len', 1000))
+        self.weight_precision = int(l_cfg.get('policy_weight_precision', 4))
+
+    def _policy_signature(self, policy: dict) -> str:
+        """生成稳定签名，避免同一条策略每轮重复入队。"""
+        payload = {
+            "src": policy["src"],
+            "dst": policy["dst"],
+            "path": policy["path"],
+            "weight": round(float(policy.get("weight", 1.0)), self.weight_precision),
+        }
+        raw = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+    def _publish_policy_if_changed(self, policy: dict) -> bool:
+        """只有策略变化时才入队，并限制队列长度，防止下发器追旧策略。"""
+        state_field = policy["flow_id"]
+        signature = self._policy_signature(policy)
+        old_signature = self.r.hget(self.policy_state_key, state_field)
+        if old_signature == signature:
+            return False
+
+        pipe = self.r.pipeline()
+        pipe.hset(self.policy_state_key, state_field, signature)
+        pipe.rpush(self.queue_name, json.dumps(policy))
+        if self.max_policy_queue_len > 0:
+            pipe.ltrim(self.queue_name, -self.max_policy_queue_len, -1)
+        pipe.execute()
+        return True
+
+    def _select_installable_policy(self, flow_id: str, routes: list[dict]) -> dict | None:
+        """
+        当前下发器以目的地址安装单条 SRv6 route，不能表达多路径分流。
+        因此每条 flow 只发布最大分配比例的路径，避免同一目的被多条策略反复覆盖。
+        """
+        if not routes:
+            return None
+
+        route = max(routes, key=lambda item: item.get('allocated_bw', 0.0))
+        path = route['path']
+        return {
+            "flow_id": flow_id,
+            "src": path[0],
+            "dst": path[-1],
+            "weight": route['weight_ratio'],
+            "path": path,
+        }
 
     def fetch_network_state(self):
         """
@@ -138,18 +187,36 @@ class LyapunovSolver:
         if not G.edges or not flows:
             return None
 
-        # 1. 预计算所有流的 K 条备选路径
+        # 1. 预计算所有流的 K 条备选路径，跳过找不到路径的流
+# 1. 预计算所有流的 K 条备选路径，跳过找不到路径的流
         flow_paths = {}
+        valid_flows = []
         for flow in flows:
+            # === 新增孤岛安全检查 ===
+            if flow['src'] not in G.nodes():
+                print(f"[警告] 流 {flow['id']} 源节点 {flow['src']} 处于断联状态(不在拓扑图中)，跳过")
+                continue
+            if flow['dst'] not in G.nodes():
+                print(f"[警告] 流 {flow['id']} 目的节点 {flow['dst']} 处于断联状态(不在拓扑图中)，跳过")
+                continue
+            # =======================
+            
             paths = self.get_k_shortest_paths(G, flow['src'], flow['dst'], self.K)
             if not paths:
-                print(f"[警告] 流 {flow['id']} 找不到连通路径")
-                return None
+                print(f"[警告] 流 {flow['id']} ({flow['src']} -> {flow['dst']}) 找不到连通路径，跳过")
+                continue
             flow_paths[flow['id']] = paths
+            valid_flows.append(flow)
+
+        if not valid_flows:
+            print("[警告] 所有流都找不到连通路径")
+            return None
+
+        print(f"[Lyapunov] 有效流数: {len(valid_flows)}/{len(flows)} (跳过 {len(flows) - len(valid_flows)} 条无路径流)")
 
         # 2. 定义 CVXPY 决策变量 (分配给特定路径的流量 x_k^p)
         x_vars = {}
-        for flow in flows:
+        for flow in valid_flows:
             # 每条流对应一个长度为可达路径数量的向量
             x_vars[flow['id']] = cp.Variable(len(flow_paths[flow['id']]), nonneg=True)
 
@@ -157,13 +224,13 @@ class LyapunovSolver:
         constraints = []
 
         # 3. 约束一：流量守恒 (Demand Satisfaction)
-        for flow in flows:
+        for flow in valid_flows:
             constraints.append(cp.sum(x_vars[flow['id']]) == flow['demand'])
 
         # 4. 构建链路利用率表达式与构建目标函数
         link_loads = {edge: 0 for edge in G.edges}
-        
-        for flow in flows:
+
+        for flow in valid_flows:
             cls_cfg = self.classes[flow['class']]
             alpha_c = cls_cfg['alpha']
             beta_c = cls_cfg['beta']
@@ -186,8 +253,9 @@ class LyapunovSolver:
                     link_loads[(u, v)] += x_vars[flow['id']][p_idx]
 
         # 5. 约束二：链路容量硬切片约束 (Strict Capacity Constraint)
+        # 注意：demand 单位是 Kbps，capacity 单位是 Mbps，需要统一
         for u, v in G.edges:
-            capacity = G[u][v]['capacity']
+            capacity = G[u][v]['capacity'] * 1000.0  # Mbps -> Kbps
             constraints.append(link_loads[(u, v)] <= capacity * self.rho)
 
         # 6. 定义问题并求解
@@ -204,7 +272,7 @@ class LyapunovSolver:
             
             # 7. 提取结果
             results = {}
-            for flow in flows:
+            for flow in valid_flows:
                 # 获取该流在每条路径上的分配流量，过滤掉极小值
                 allocations = x_vars[flow['id']].value
                 best_paths = []
@@ -223,10 +291,24 @@ class LyapunovSolver:
             return None
 
     def path_to_sid_list(self, path):
-        """将节点路径转换为 SRv6 SID 列表 (倒序压栈)"""
+        """将节点路径转换为 SRv6 SID 列表 (倒序压栈)
+
+        节点格式可能是:
+        - Satellite_xxx (完整容器名)
+        - fd00:xxxx::1 (已转换的IPv6)
+
+        统一转换为仅哈希的 IPv6 格式: fd00:xxxx:xxxx::1
+        """
         sid_list = []
         for node in reversed(path):
-            sid_list.append(f"{self.sid_prefix}{node}::1")
+            # 提取哈希值
+            clean_id = str(node).replace("Satellite_", "").replace("GroundStation_", "")
+            clean_id = clean_id.replace("fd00:", "").replace("::1", "").replace(":", "").replace("_", "")
+            # 格式化为 fd00:xxxx:xxxx::1
+            if len(clean_id) == 8:
+                sid_list.append(f"fd00:{clean_id[:4]}:{clean_id[4:]}::1")
+            else:
+                sid_list.append(f"fd00:{clean_id}::1")
         return sid_list
 
     def fetch_flows(self):
@@ -307,21 +389,28 @@ class LyapunovSolver:
 
                 if results:
                     print("[t] 最优策略已生成，下发 SRv6 意图：")
+                    published = 0
+                    skipped = 0
                     for flow_id, routes in results.items():
                         for route in routes:
                             sid_list = self.path_to_sid_list(route['path'])
                             print(f"  -> 流 [{flow_id}] | 占比 {route['weight_ratio']:.0%} | 路径: {' -> '.join(route['path'])}")
                             print(f"     SID: {sid_list}")
 
-                            # 将策略推入 Redis 队列，让 python_bgp_gateway/sr_policy_sender.py 消费
-                            policy_cmd = {
-                                "flow_id": flow_id,
-                                "src": route['path'][0],
-                                "dst": route['path'][-1],
-                                "weight": route['weight_ratio'],
-                                "sids": sid_list
-                            }
-                            self.r.rpush(self.queue_name, json.dumps(policy_cmd))
+                        policy_cmd = self._select_installable_policy(flow_id, routes)
+                        if not policy_cmd:
+                            continue
+
+                        if self._publish_policy_if_changed(policy_cmd):
+                            published += 1
+                            print(f"     [publish] 已入队当前主路径，占比 {policy_cmd['weight']:.0%}")
+                        else:
+                            skipped += 1
+
+                    print(
+                        f"[t] 策略发布完成: 新增/变化 {published} 条, 未变化跳过 {skipped} 条, "
+                        f"队列长度 {self.r.llen(self.queue_name)}"
+                    )
 
             except KeyboardInterrupt:
                 print("\n收到停止信号，Lyapunov 引擎退出...")

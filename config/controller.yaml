@@ -23,7 +23,7 @@ lyapunov_engine:
   polling_interval_ms: 2000          # 求解周期 (2秒一次)
   v_parameter: 100.0                 # V 值：平衡延迟与拥塞
   max_k_paths: 3                     # KSP 算法的备选路径数量 K
-  capacity_rho: 0.85                 # 链路容量切片阈值 (留下15%给C++的分布式底层流)
+  capacity_rho: 0.3                  # 链路容量切片阈值 (留下15%给C++的分布式底层流)
   
   traffic_classes:
     class_1_urllc:                   # 高优控制流
