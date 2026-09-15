@@ -1,12 +1,14 @@
+import argparse
 import time
 import json
 import yaml
 import redis
 import hashlib
 import networkx as nx
-import cvxpy as cp
 import numpy as np
 from itertools import islice
+from scipy.optimize import Bounds, LinearConstraint, milp
+from scipy.sparse import lil_matrix
 
 class LyapunovSolver:
     def __init__(self, config_path):
@@ -24,19 +26,60 @@ class LyapunovSolver:
         self.classes = l_cfg['traffic_classes']
         self.sid_prefix = self.config['network']['srv6_locator_prefix']
         self.policy_state_key = l_cfg.get('policy_state_key', 'te:policy:last_signature')
+        self.policy_details_key = l_cfg.get('policy_details_key', 'te:policy:desired')
+        self.policy_changed_at_key = l_cfg.get('policy_changed_at_key', 'te:policy:changed_at')
         self.max_policy_queue_len = int(l_cfg.get('max_policy_queue_len', 1000))
-        self.weight_precision = int(l_cfg.get('policy_weight_precision', 4))
+        self.min_policy_dwell_seconds = float(l_cfg.get('min_policy_dwell_seconds', 20))
+        self.max_sid_depth = int(
+            self.config.get('te_engine', {}).get('max_sid_depth', 16)
+        )
+
+        self._replace_policy_script = self.r.register_script(
+            """
+            local queue = KEYS[1]
+            local flow_id = ARGV[1]
+            local new_policy = ARGV[2]
+            local max_len = tonumber(ARGV[3])
+            local values = redis.call('LRANGE', queue, 0, -1)
+            redis.call('DEL', queue)
+            for _, raw in ipairs(values) do
+                local ok, decoded = pcall(cjson.decode, raw)
+                if (not ok) or decoded['flow_id'] ~= flow_id then
+                    redis.call('RPUSH', queue, raw)
+                end
+            end
+            redis.call('RPUSH', queue, new_policy)
+            if max_len > 0 then
+                redis.call('LTRIM', queue, -max_len, -1)
+            end
+            return redis.call('LLEN', queue)
+            """
+        )
 
     def _policy_signature(self, policy: dict) -> str:
-        """生成稳定签名，避免同一条策略每轮重复入队。"""
+        """生成稳定签名，避免同一路径因权重浮动反复入队。
+
+        当前 SRv6 sender 最终安装的是单条内核 route，weight 不会体现在
+        Linux 路由行为里；把 weight 纳入签名只会让微小求解抖动触发重复下发。
+        """
         payload = {
             "src": policy["src"],
             "dst": policy["dst"],
             "path": policy["path"],
-            "weight": round(float(policy.get("weight", 1.0)), self.weight_precision),
         }
         raw = json.dumps(payload, sort_keys=True, separators=(",", ":"))
         return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+    def _replace_queued_policy(self, policy: dict) -> None:
+        """Atomically keep only the newest queued policy for this flow."""
+        self._replace_policy_script(
+            keys=[self.queue_name],
+            args=[
+                policy["flow_id"],
+                json.dumps(policy, separators=(",", ":")),
+                self.max_policy_queue_len,
+            ],
+        )
 
     def _publish_policy_if_changed(self, policy: dict) -> bool:
         """只有策略变化时才入队，并限制队列长度，防止下发器追旧策略。"""
@@ -46,12 +89,25 @@ class LyapunovSolver:
         if old_signature == signature:
             return False
 
-        pipe = self.r.pipeline()
+        now = time.time()
+        changed_at = float(self.r.hget(self.policy_changed_at_key, state_field) or 0)
+        if (
+            old_signature
+            and self.min_policy_dwell_seconds > 0
+            and now - changed_at < self.min_policy_dwell_seconds
+        ):
+            return False
+
+        pipe = self.r.pipeline(transaction=True)
         pipe.hset(self.policy_state_key, state_field, signature)
-        pipe.rpush(self.queue_name, json.dumps(policy))
-        if self.max_policy_queue_len > 0:
-            pipe.ltrim(self.queue_name, -self.max_policy_queue_len, -1)
+        pipe.hset(
+            self.policy_details_key,
+            state_field,
+            json.dumps(policy, separators=(",", ":")),
+        )
+        pipe.hset(self.policy_changed_at_key, state_field, f"{now:.6f}")
         pipe.execute()
+        self._replace_queued_policy(policy)
         return True
 
     def _select_installable_policy(self, flow_id: str, routes: list[dict]) -> dict | None:
@@ -180,115 +236,248 @@ class LyapunovSolver:
             return []
 
     def solve_lyapunov_mcf(self, G, flows):
-        """
-        核心数学模型转化：求解差异化 Lyapunov 优化方程
-        flows: list of dicts [{'id': 'f1', 'src': 's1', 'dst': 'd1', 'class': 'class_1_urllc', 'demand': 50}]
+        """Globally select one installable path per flow.
+
+        The data plane installs one destination route per flow, so fractional
+        MCF output cannot be represented faithfully.  Build a small binary
+        min-max model over the K candidate paths instead: the primary objective
+        minimizes the highest normalized offered load on any directed link,
+        while the Lyapunov delay/queue term selects among equally balanced
+        solutions.  A deterministic marginal-cost greedy pass is retained as a
+        fallback when the integer solver cannot return a feasible incumbent.
         """
         if not G.edges or not flows:
             return None
 
-        # 1. 预计算所有流的 K 条备选路径，跳过找不到路径的流
-# 1. 预计算所有流的 K 条备选路径，跳过找不到路径的流
-        flow_paths = {}
         valid_flows = []
         for flow in flows:
-            # === 新增孤岛安全检查 ===
-            if flow['src'] not in G.nodes():
-                print(f"[警告] 流 {flow['id']} 源节点 {flow['src']} 处于断联状态(不在拓扑图中)，跳过")
+            if flow['src'] not in G:
+                print(f"[警告] 流 {flow['id']} 源节点 {flow['src']} 不在拓扑图中，跳过")
                 continue
-            if flow['dst'] not in G.nodes():
-                print(f"[警告] 流 {flow['id']} 目的节点 {flow['dst']} 处于断联状态(不在拓扑图中)，跳过")
+            if flow['dst'] not in G:
+                print(f"[警告] 流 {flow['id']} 目的节点 {flow['dst']} 不在拓扑图中，跳过")
                 continue
-            # =======================
-            
-            paths = self.get_k_shortest_paths(G, flow['src'], flow['dst'], self.K)
+            paths = self.get_k_shortest_paths(
+                G,
+                flow['src'],
+                flow['dst'],
+                self.K,
+            )
+            paths = [
+                path for path in paths
+                if len(path) - 1 <= self.max_sid_depth
+            ]
             if not paths:
-                print(f"[警告] 流 {flow['id']} ({flow['src']} -> {flow['dst']}) 找不到连通路径，跳过")
+                print(f"[警告] 流 {flow['id']} 找不到连通路径，跳过")
                 continue
-            flow_paths[flow['id']] = paths
-            valid_flows.append(flow)
+            valid_flows.append((flow, paths))
 
         if not valid_flows:
-            print("[警告] 所有流都找不到连通路径")
             return None
 
-        print(f"[Lyapunov] 有效流数: {len(valid_flows)}/{len(flows)} (跳过 {len(flows) - len(valid_flows)} 条无路径流)")
-
-        # 2. 定义 CVXPY 决策变量 (分配给特定路径的流量 x_k^p)
-        x_vars = {}
-        for flow in valid_flows:
-            # 每条流对应一个长度为可达路径数量的向量
-            x_vars[flow['id']] = cp.Variable(len(flow_paths[flow['id']]), nonneg=True)
-
-        objective_terms = []
-        constraints = []
-
-        # 3. 约束一：流量守恒 (Demand Satisfaction)
-        for flow in valid_flows:
-            constraints.append(cp.sum(x_vars[flow['id']]) == flow['demand'])
-
-        # 4. 构建链路利用率表达式与构建目标函数
-        link_loads = {edge: 0 for edge in G.edges}
-
-        for flow in valid_flows:
+        valid_flows.sort(key=lambda item: item[0]['id'])
+        edges = sorted(G.edges)
+        edge_index = {edge: index for index, edge in enumerate(edges)}
+        candidates = []
+        candidates_by_flow = [[] for _ in valid_flows]
+        for flow_index, (flow, paths) in enumerate(valid_flows):
             cls_cfg = self.classes[flow['class']]
-            alpha_c = cls_cfg['alpha']
-            beta_c = cls_cfg['beta']
-            
-            for p_idx, path in enumerate(flow_paths[flow['id']]):
+            alpha_c = float(cls_cfg['alpha'])
+            beta_c = float(cls_cfg['beta'])
+            for path in paths:
                 path_edges = list(zip(path[:-1], path[1:]))
-                
-                # 计算该路径的物理总延迟 D_p(t) 和总队列积压 \sum Q_e(t)
-                path_delay = sum(G[u][v]['delay'] for u, v in path_edges)
-                path_queue = sum(G[u][v]['queue'] for u, v in path_edges)
-                
-                # 数学公式核心：差异化 Lyapunov 权重 W_k^p(t)
-                weight = self.V * alpha_c * path_delay + beta_c * path_queue
-                
-                # 累加至目标函数
-                objective_terms.append(weight * x_vars[flow['id']][p_idx])
-                
-                # 累加链路负载用于后续容量约束
-                for u, v in path_edges:
-                    link_loads[(u, v)] += x_vars[flow['id']][p_idx]
+                path_delay = sum(
+                    float(G[u][v]['delay']) for u, v in path_edges
+                )
+                # queue_monitor reports bytes, while path_delay is in
+                # milliseconds. Convert backlog/drop penalty bytes to the
+                # equivalent serialization delay before combining both terms.
+                # At 16 Mbps, for example, 1500 bytes correspond to 0.75 ms.
+                path_queue = sum(
+                    float(G[u][v]['queue'])
+                    * 8.0
+                    / (
+                        max(1.0, float(G[u][v]['capacity']))
+                        * 1000.0
+                    )
+                    for u, v in path_edges
+                )
+                path_cost = (
+                    self.V * alpha_c * path_delay
+                    + beta_c * path_queue
+                )
+                candidate_index = len(candidates)
+                candidates_by_flow[flow_index].append(candidate_index)
+                candidates.append({
+                    'flow_index': flow_index,
+                    'path': path,
+                    'edges': path_edges,
+                    'path_cost': path_cost,
+                })
 
-        # 5. 约束二：链路容量硬切片约束 (Strict Capacity Constraint)
-        # 注意：demand 单位是 Kbps，capacity 单位是 Mbps，需要统一
-        for u, v in G.edges:
-            capacity = G[u][v]['capacity'] * 1000.0  # Mbps -> Kbps
-            constraints.append(link_loads[(u, v)] <= capacity * self.rho)
+        variable_count = len(candidates) + 1
+        max_load_variable = variable_count - 1
+        constraint_count = len(valid_flows) + len(edges)
+        matrix = lil_matrix((constraint_count, variable_count))
+        lower = np.full(constraint_count, -np.inf)
+        upper = np.zeros(constraint_count)
 
-        # 6. 定义问题并求解
-        objective = cp.Minimize(cp.sum(objective_terms))
-        prob = cp.Problem(objective, constraints)
-        
-        try:
-            # 使用 OSQP 求解器，速度极快
-            prob.solve(solver=cp.OSQP, warm_start=True)
-            
-            if prob.status not in ["optimal", "optimal_inaccurate"]:
-                print(f"[Lyapunov] 求解失败，状态: {prob.status}")
-                return None
-            
-            # 7. 提取结果
-            results = {}
-            for flow in valid_flows:
-                # 获取该流在每条路径上的分配流量，过滤掉极小值
-                allocations = x_vars[flow['id']].value
-                best_paths = []
-                for p_idx, val in enumerate(allocations):
-                    if val > 1e-3:  # 消除浮点误差
-                        best_paths.append({
-                            'path': flow_paths[flow['id']][p_idx],
-                            'allocated_bw': float(val),
-                            'weight_ratio': float(val / flow['demand'])
-                        })
-                results[flow['id']] = best_paths
-            return results
-            
-        except Exception as e:
-            print(f"[Lyapunov] 求解引擎崩溃: {str(e)}")
-            return None
+        for flow_index, candidate_indexes in enumerate(candidates_by_flow):
+            lower[flow_index] = 1.0
+            upper[flow_index] = 1.0
+            for candidate_index in candidate_indexes:
+                matrix[flow_index, candidate_index] = 1.0
+
+        for candidate_index, candidate in enumerate(candidates):
+            flow = valid_flows[candidate['flow_index']][0]
+            demand_kbps = max(0.0, float(flow['demand']))
+            for edge in candidate['edges']:
+                capacity_kbps = max(
+                    1.0,
+                    float(G[edge[0]][edge[1]]['capacity'])
+                    * 1000.0
+                    * self.rho,
+                )
+                row = len(valid_flows) + edge_index[edge]
+                matrix[row, candidate_index] = demand_kbps / capacity_kbps
+        for edge_offset in range(len(edges)):
+            matrix[
+                len(valid_flows) + edge_offset,
+                max_load_variable,
+            ] = -1.0
+
+        objective = np.zeros(variable_count)
+        for index, candidate in enumerate(candidates):
+            # Stable microscopic tie-break after the physical path cost.
+            objective[index] = candidate['path_cost'] + index * 1e-7
+        # A full unit of normalized peak load dominates any possible aggregate
+        # delay/queue difference in this small experiment.
+        objective[max_load_variable] = 1_000_000.0
+        integrality = np.ones(variable_count)
+        integrality[max_load_variable] = 0
+        bounds = Bounds(
+            np.zeros(variable_count),
+            np.concatenate((np.ones(len(candidates)), [np.inf])),
+        )
+        solution = milp(
+            c=objective,
+            integrality=integrality,
+            bounds=bounds,
+            constraints=LinearConstraint(
+                matrix.tocsr(),
+                lower,
+                upper,
+            ),
+            options={'time_limit': 20.0, 'mip_rel_gap': 0.0},
+        )
+
+        selected = {}
+        if solution.x is not None:
+            for flow_index, candidate_indexes in enumerate(candidates_by_flow):
+                chosen = max(
+                    candidate_indexes,
+                    key=lambda index: solution.x[index],
+                )
+                if solution.x[chosen] < 0.5:
+                    selected = {}
+                    break
+                selected[flow_index] = chosen
+
+        if len(selected) != len(valid_flows):
+            print(
+                f"[警告] 全局单路径模型未返回可用解 "
+                f"(status={solution.status}, message={solution.message})，"
+                "回退到确定性增量选路"
+            )
+            selected = {}
+            link_load_kbps = {edge: 0.0 for edge in edges}
+            placement_order = sorted(
+                range(len(valid_flows)),
+                key=lambda index: (
+                    -float(valid_flows[index][0]['demand']),
+                    valid_flows[index][0]['id'],
+                ),
+            )
+            for flow_index in placement_order:
+                flow = valid_flows[flow_index][0]
+                demand_kbps = max(0.0, float(flow['demand']))
+                choices = []
+                for candidate_index in candidates_by_flow[flow_index]:
+                    candidate = candidates[candidate_index]
+                    projected_peak = max(
+                        [
+                            (
+                                link_load_kbps[edge] + demand_kbps
+                            )
+                            / (
+                                max(
+                                    1.0,
+                                    float(G[edge[0]][edge[1]]['capacity'])
+                                    * 1000.0
+                                    * self.rho,
+                                )
+                            )
+                            for edge in candidate['edges']
+                        ]
+                        + [
+                            link_load_kbps[edge]
+                            / (
+                                max(
+                                    1.0,
+                                    float(G[edge[0]][edge[1]]['capacity'])
+                                    * 1000.0
+                                    * self.rho,
+                                )
+                            )
+                            for edge in edges
+                        ]
+                    )
+                    choices.append((
+                        projected_peak,
+                        candidate['path_cost'],
+                        len(candidate['path']),
+                        tuple(candidate['path']),
+                        candidate_index,
+                    ))
+                chosen = min(choices)[-1]
+                selected[flow_index] = chosen
+                for edge in candidates[chosen]['edges']:
+                    link_load_kbps[edge] += demand_kbps
+
+        results = {}
+        planned_load_kbps = {edge: 0.0 for edge in edges}
+        for flow_index, candidate_index in selected.items():
+            flow = valid_flows[flow_index][0]
+            candidate = candidates[candidate_index]
+            demand = max(0.0, float(flow['demand']))
+            for edge in candidate['edges']:
+                planned_load_kbps[edge] += demand
+            results[flow['id']] = [{
+                'path': candidate['path'],
+                'allocated_bw': demand,
+                'weight_ratio': 1.0,
+                'objective': float(candidate['path_cost']),
+            }]
+
+        peak_utilization = max(
+            planned_load_kbps[edge]
+            / (
+                max(
+                    1.0,
+                    float(G[edge[0]][edge[1]]['capacity'])
+                    * 1000.0
+                    * self.rho,
+                )
+            )
+            for edge in edges
+        )
+
+        print(
+            f"[Lyapunov] 全局单路径策略: {len(results)}/{len(flows)}, "
+            f"候选路径 K={self.K}, 预测峰值利用率={peak_utilization:.3f}, "
+            f"MILP状态={solution.status}"
+        )
+        return results
 
     def path_to_sid_list(self, path):
         """将节点路径转换为 SRv6 SID 列表 (倒序压栈)
@@ -300,7 +489,7 @@ class LyapunovSolver:
         统一转换为仅哈希的 IPv6 格式: fd00:xxxx:xxxx::1
         """
         sid_list = []
-        for node in reversed(path):
+        for node in path[1:]:
             # 提取哈希值
             clean_id = str(node).replace("Satellite_", "").replace("GroundStation_", "")
             clean_id = clean_id.replace("fd00:", "").replace("::1", "").replace(":", "").replace("_", "")
@@ -330,7 +519,7 @@ class LyapunovSolver:
             print(f"[警告] 读取流量需求失败: {e}")
             return None
 
-    def run(self):
+    def run(self, once=False):
         print("====== Lyapunov 差异化 TE 引擎启动 ======")
         print(f"配置: V={self.V}, K={self.K}, rho={self.rho}")
         print(f"流量类别权重:")
@@ -411,14 +600,31 @@ class LyapunovSolver:
                         f"[t] 策略发布完成: 新增/变化 {published} 条, 未变化跳过 {skipped} 条, "
                         f"队列长度 {self.r.llen(self.queue_name)}"
                     )
+                if once:
+                    break
 
             except KeyboardInterrupt:
                 print("\n收到停止信号，Lyapunov 引擎退出...")
                 break
             except Exception as e:
                 print(f"[错误] 主循环异常: {e}")
+                if once:
+                    raise
+
+            time.sleep(polling_ms / 1000.0)
 
 if __name__ == '__main__':
-    # 假设你的配置文件相对路径如下
-    solver = LyapunovSolver("../config/controller.yaml")
-    solver.run()
+    parser = argparse.ArgumentParser(description="OpenSN Lyapunov SRv6 TE solver")
+    parser.add_argument(
+        "--config",
+        default="../config/controller.yaml",
+        help="controller YAML path",
+    )
+    parser.add_argument(
+        "--once",
+        action="store_true",
+        help="compute and publish one stable policy snapshot, then exit",
+    )
+    args = parser.parse_args()
+    solver = LyapunovSolver(args.config)
+    solver.run(once=args.once)

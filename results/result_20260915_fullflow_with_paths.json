@@ -1,0 +1,1440 @@
+{
+  "all_cycles_in_target": false,
+  "completed_cycles": 1,
+  "cycles": [
+    {
+      "baseline": {
+        "active_flows": 24,
+        "actual_sent_mbps": 76.388,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.04020386642961576,
+            "max_mbps": 2.088,
+            "mean_mbps": 1.914,
+            "median_mbps": 1.912,
+            "min_mbps": 1.808,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.020229805334805638,
+            "max_mbps": 3.608,
+            "mean_mbps": 3.4793333333333334,
+            "median_mbps": 3.476,
+            "min_mbps": 3.36,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.08543657462716811,
+            "max_mbps": 1.488,
+            "mean_mbps": 1.3,
+            "median_mbps": 1.284,
+            "min_mbps": 1.104,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.07371199935453839,
+            "max_mbps": 2.68,
+            "mean_mbps": 2.3833333333333333,
+            "median_mbps": 2.352,
+            "min_mbps": 2.04,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.11835924844819569,
+            "max_mbps": 1.056,
+            "mean_mbps": 0.8586666666666667,
+            "median_mbps": 0.84,
+            "min_mbps": 0.72,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.020582699961961323,
+            "max_mbps": 1.92,
+            "mean_mbps": 1.8493333333333333,
+            "median_mbps": 1.844,
+            "min_mbps": 1.776,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.06402537283200635,
+            "max_mbps": 1.344,
+            "mean_mbps": 1.218,
+            "median_mbps": 1.204,
+            "min_mbps": 1.08,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.04056669130819075,
+            "max_mbps": 2.016,
+            "mean_mbps": 1.902,
+            "median_mbps": 1.912,
+            "min_mbps": 1.768,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.016782116275002062,
+            "max_mbps": 2.056,
+            "mean_mbps": 1.9973333333333334,
+            "median_mbps": 1.996,
+            "min_mbps": 1.936,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.014693580734538947,
+            "max_mbps": 2.048,
+            "mean_mbps": 2.0020000000000002,
+            "median_mbps": 2.016,
+            "min_mbps": 1.944,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.04139421574910971,
+            "max_mbps": 1.872,
+            "mean_mbps": 1.7473333333333334,
+            "median_mbps": 1.74,
+            "min_mbps": 1.616,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.005336654952351307,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.12,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.027988644256800258,
+            "max_mbps": 2.728,
+            "mean_mbps": 2.586,
+            "median_mbps": 2.572,
+            "min_mbps": 2.496,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.03635667100330004,
+            "max_mbps": 1.824,
+            "mean_mbps": 1.7146666666666668,
+            "median_mbps": 1.712,
+            "min_mbps": 1.608,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.014225041035552539,
+            "max_mbps": 2.024,
+            "mean_mbps": 1.99,
+            "median_mbps": 2.0,
+            "min_mbps": 1.936,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.03759862653418885,
+            "max_mbps": 1.592,
+            "mean_mbps": 1.5006666666666666,
+            "median_mbps": 1.488,
+            "min_mbps": 1.416,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.03030954369124783,
+            "max_mbps": 2.808,
+            "mean_mbps": 2.6653333333333333,
+            "median_mbps": 2.68,
+            "min_mbps": 2.504,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.010073466372098995,
+            "max_mbps": 4.2,
+            "mean_mbps": 4.152,
+            "median_mbps": 4.16,
+            "min_mbps": 4.072,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.06047141974000029,
+            "max_mbps": 2.064,
+            "mean_mbps": 1.9013333333333333,
+            "median_mbps": 1.936,
+            "min_mbps": 1.728,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.003851398966640221,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.24,
+            "median_mbps": 4.24,
+            "min_mbps": 4.2,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.0526358013263589,
+            "max_mbps": 2.264,
+            "mean_mbps": 2.0893333333333333,
+            "median_mbps": 2.072,
+            "min_mbps": 1.936,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.030119438466577643,
+            "max_mbps": 3.072,
+            "mean_mbps": 2.9339999999999997,
+            "median_mbps": 2.944,
+            "min_mbps": 2.784,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          }
+        },
+        "min_flow_sent_ratio": 0.9998114985862394,
+        "nominal_sent_mbps": 76.392,
+        "phase": "baseline_1_1789446691",
+        "samples_per_flow": 12,
+        "sender_flows": {
+          "iperf_auto_flow_0": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_1": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_10": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_11": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_12": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_13": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_14": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_15": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_16": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_17": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_18": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_19": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_2": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_20": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_21": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_22": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_23": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_3": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_4": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_5": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_6": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_7": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_8": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_9": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          }
+        },
+        "sent_load_ratio": 0.9999476384961777,
+        "total_cv": 0.0030381580382410917,
+        "total_max_mbps": 55.13600000000002,
+        "total_mean_mbps": 54.910000000000004,
+        "total_median_mbps": 54.88800000000002,
+        "total_min_mbps": 54.57599999999999,
+        "total_series_mbps": [
+          54.95200000000002,
+          55.0,
+          55.06400000000001,
+          55.128,
+          55.07200000000002,
+          54.784000000000006,
+          54.82400000000001,
+          54.792,
+          54.776,
+          54.81600000000001,
+          55.13600000000002,
+          54.57599999999999
+        ]
+      },
+      "cycle": 1,
+      "improvement_percent": 39.06756510653798,
+      "ping": {
+        "policies": 24,
+        "srv6_ipv4_ping_failed": [],
+        "srv6_ipv4_ping_ok": 24,
+        "srv6_ipv6_ping_failed": [],
+        "srv6_ipv6_ping_ok": 24,
+        "validation_rounds": 1
+      },
+      "policy": {
+        "applied": 24,
+        "desired": 24,
+        "items": [
+          {
+            "applied_at": 1789446768.889357,
+            "dst": "Satellite_04b5dc73",
+            "dst_ipv4": "10.0.1.133",
+            "dst_sid": "fd00:04b5:dc73::1",
+            "flow_id": "iperf_auto_flow_0",
+            "path": [
+              "Satellite_3b06efad",
+              "Satellite_bf29f4e1",
+              "Satellite_feb19423",
+              "Satellite_9477b925",
+              "Satellite_a0a719b8",
+              "Satellite_04b5dc73"
+            ],
+            "sids": [
+              "fd01:bf29:f4e1::1",
+              "fd01:feb1:9423::1",
+              "fd01:9477:b925::1",
+              "fd01:a0a7:19b8::1",
+              "fd01:4b5:dc73::1"
+            ],
+            "src": "Satellite_3b06efad",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446768.6449535,
+            "dst": "Satellite_bc1140db",
+            "dst_ipv4": "10.0.1.21",
+            "dst_sid": "fd00:bc11:40db::1",
+            "flow_id": "iperf_auto_flow_1",
+            "path": [
+              "Satellite_bf29f4e1",
+              "Satellite_feb19423",
+              "Satellite_9477b925",
+              "Satellite_a0a719b8",
+              "Satellite_04b5dc73",
+              "Satellite_bc1140db"
+            ],
+            "sids": [
+              "fd01:feb1:9423::1",
+              "fd01:9477:b925::1",
+              "fd01:a0a7:19b8::1",
+              "fd01:4b5:dc73::1",
+              "fd01:bc11:40db::1"
+            ],
+            "src": "Satellite_bf29f4e1",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446768.5980468,
+            "dst": "Satellite_1cc28aa7",
+            "dst_ipv4": "10.0.1.197",
+            "dst_sid": "fd00:1cc2:8aa7::1",
+            "flow_id": "iperf_auto_flow_10",
+            "path": [
+              "Satellite_71d17978",
+              "Satellite_365cab78",
+              "Satellite_b39ff179",
+              "Satellite_4f15fb67",
+              "Satellite_38da72ae",
+              "Satellite_1cc28aa7"
+            ],
+            "sids": [
+              "fd01:365c:ab78::1",
+              "fd01:b39f:f179::1",
+              "fd01:4f15:fb67::1",
+              "fd01:38da:72ae::1",
+              "fd01:1cc2:8aa7::1"
+            ],
+            "src": "Satellite_71d17978",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446768.688194,
+            "dst": "Satellite_6c745193",
+            "dst_ipv4": "10.0.1.5",
+            "dst_sid": "fd00:6c74:5193::1",
+            "flow_id": "iperf_auto_flow_11",
+            "path": [
+              "Satellite_365cab78",
+              "Satellite_b39ff179",
+              "Satellite_4f15fb67",
+              "Satellite_38da72ae",
+              "Satellite_1cc28aa7",
+              "Satellite_6c745193"
+            ],
+            "sids": [
+              "fd01:b39f:f179::1",
+              "fd01:4f15:fb67::1",
+              "fd01:38da:72ae::1",
+              "fd01:1cc2:8aa7::1",
+              "fd01:6c74:5193::1"
+            ],
+            "src": "Satellite_365cab78",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.0844007,
+            "dst": "Satellite_3b06efad",
+            "dst_ipv4": "10.0.0.97",
+            "dst_sid": "fd00:3b06:efad::1",
+            "flow_id": "iperf_auto_flow_12",
+            "path": [
+              "Satellite_04b5dc73",
+              "Satellite_a0a719b8",
+              "Satellite_71d17978",
+              "Satellite_26791c8a",
+              "Satellite_a7768a58",
+              "Satellite_f1add772",
+              "Satellite_1c1c2059",
+              "Satellite_3b06efad"
+            ],
+            "sids": [
+              "fd01:a0a7:19b8::1",
+              "fd01:71d1:7978::1",
+              "fd01:2679:1c8a::1",
+              "fd01:a776:8a58::1",
+              "fd01:f1ad:d772::1",
+              "fd01:1c1c:2059::1",
+              "fd01:3b06:efad::1"
+            ],
+            "src": "Satellite_04b5dc73",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.0721464,
+            "dst": "Satellite_bf29f4e1",
+            "dst_ipv4": "10.0.0.161",
+            "dst_sid": "fd00:bf29:f4e1::1",
+            "flow_id": "iperf_auto_flow_13",
+            "path": [
+              "Satellite_bc1140db",
+              "Satellite_9506d682",
+              "Satellite_defd7f24",
+              "Satellite_b090ab91",
+              "Satellite_a8dd35c9",
+              "Satellite_3b06efad",
+              "Satellite_bf29f4e1"
+            ],
+            "sids": [
+              "fd01:9506:d682::1",
+              "fd01:defd:7f24::1",
+              "fd01:b090:ab91::1",
+              "fd01:a8dd:35c9::1",
+              "fd01:3b06:efad::1",
+              "fd01:bf29:f4e1::1"
+            ],
+            "src": "Satellite_bc1140db",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.2379823,
+            "dst": "Satellite_feb19423",
+            "dst_ipv4": "10.0.0.162",
+            "dst_sid": "fd00:feb1:9423::1",
+            "flow_id": "iperf_auto_flow_14",
+            "path": [
+              "Satellite_9506d682",
+              "Satellite_bc1140db",
+              "Satellite_04b5dc73",
+              "Satellite_a0a719b8",
+              "Satellite_9477b925",
+              "Satellite_feb19423"
+            ],
+            "sids": [
+              "fd01:bc11:40db::1",
+              "fd01:4b5:dc73::1",
+              "fd01:a0a7:19b8::1",
+              "fd01:9477:b925::1",
+              "fd01:feb1:9423::1"
+            ],
+            "src": "Satellite_9506d682",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.5249333,
+            "dst": "Satellite_9477b925",
+            "dst_ipv4": "10.0.1.113",
+            "dst_sid": "fd00:9477:b925::1",
+            "flow_id": "iperf_auto_flow_15",
+            "path": [
+              "Satellite_defd7f24",
+              "Satellite_9506d682",
+              "Satellite_bc1140db",
+              "Satellite_04b5dc73",
+              "Satellite_a0a719b8",
+              "Satellite_9477b925"
+            ],
+            "sids": [
+              "fd01:9506:d682::1",
+              "fd01:bc11:40db::1",
+              "fd01:4b5:dc73::1",
+              "fd01:a0a7:19b8::1",
+              "fd01:9477:b925::1"
+            ],
+            "src": "Satellite_defd7f24",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.627512,
+            "dst": "Satellite_a0a719b8",
+            "dst_ipv4": "10.0.1.157",
+            "dst_sid": "fd00:a0a7:19b8::1",
+            "flow_id": "iperf_auto_flow_16",
+            "path": [
+              "Satellite_b090ab91",
+              "Satellite_defd7f24",
+              "Satellite_9506d682",
+              "Satellite_bc1140db",
+              "Satellite_04b5dc73",
+              "Satellite_a0a719b8"
+            ],
+            "sids": [
+              "fd01:defd:7f24::1",
+              "fd01:9506:d682::1",
+              "fd01:bc11:40db::1",
+              "fd01:4b5:dc73::1",
+              "fd01:a0a7:19b8::1"
+            ],
+            "src": "Satellite_b090ab91",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.7683828,
+            "dst": "Satellite_04b5dc73",
+            "dst_ipv4": "10.0.1.133",
+            "dst_sid": "fd00:04b5:dc73::1",
+            "flow_id": "iperf_auto_flow_17",
+            "path": [
+              "Satellite_a8dd35c9",
+              "Satellite_6c745193",
+              "Satellite_1cc28aa7",
+              "Satellite_38da72ae",
+              "Satellite_4f15fb67",
+              "Satellite_9506d682",
+              "Satellite_bc1140db",
+              "Satellite_04b5dc73"
+            ],
+            "sids": [
+              "fd01:6c74:5193::1",
+              "fd01:1cc2:8aa7::1",
+              "fd01:38da:72ae::1",
+              "fd01:4f15:fb67::1",
+              "fd01:9506:d682::1",
+              "fd01:bc11:40db::1",
+              "fd01:4b5:dc73::1"
+            ],
+            "src": "Satellite_a8dd35c9",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446769.6781883,
+            "dst": "Satellite_1c1c2059",
+            "dst_ipv4": "10.0.1.121",
+            "dst_sid": "fd00:1c1c:2059::1",
+            "flow_id": "iperf_auto_flow_18",
+            "path": [
+              "Satellite_365cab78",
+              "Satellite_71d17978",
+              "Satellite_26791c8a",
+              "Satellite_a7768a58",
+              "Satellite_f1add772",
+              "Satellite_1c1c2059"
+            ],
+            "sids": [
+              "fd01:71d1:7978::1",
+              "fd01:2679:1c8a::1",
+              "fd01:a776:8a58::1",
+              "fd01:f1ad:d772::1",
+              "fd01:1c1c:2059::1"
+            ],
+            "src": "Satellite_365cab78",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.0574672,
+            "dst": "Satellite_f1add772",
+            "dst_ipv4": "10.0.1.122",
+            "dst_sid": "fd00:f1ad:d772::1",
+            "flow_id": "iperf_auto_flow_19",
+            "path": [
+              "Satellite_b39ff179",
+              "Satellite_365cab78",
+              "Satellite_71d17978",
+              "Satellite_26791c8a",
+              "Satellite_a7768a58",
+              "Satellite_f1add772"
+            ],
+            "sids": [
+              "fd01:365c:ab78::1",
+              "fd01:71d1:7978::1",
+              "fd01:2679:1c8a::1",
+              "fd01:a776:8a58::1",
+              "fd01:f1ad:d772::1"
+            ],
+            "src": "Satellite_b39ff179",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.1420026,
+            "dst": "Satellite_9506d682",
+            "dst_ipv4": "10.0.0.69",
+            "dst_sid": "fd00:9506:d682::1",
+            "flow_id": "iperf_auto_flow_2",
+            "path": [
+              "Satellite_feb19423",
+              "Satellite_bf29f4e1",
+              "Satellite_3b06efad",
+              "Satellite_a8dd35c9",
+              "Satellite_b090ab91",
+              "Satellite_defd7f24",
+              "Satellite_9506d682"
+            ],
+            "sids": [
+              "fd01:bf29:f4e1::1",
+              "fd01:3b06:efad::1",
+              "fd01:a8dd:35c9::1",
+              "fd01:b090:ab91::1",
+              "fd01:defd:7f24::1",
+              "fd01:9506:d682::1"
+            ],
+            "src": "Satellite_feb19423",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.2552533,
+            "dst": "Satellite_a7768a58",
+            "dst_ipv4": "10.0.0.201",
+            "dst_sid": "fd00:a776:8a58::1",
+            "flow_id": "iperf_auto_flow_20",
+            "path": [
+              "Satellite_4f15fb67",
+              "Satellite_b39ff179",
+              "Satellite_365cab78",
+              "Satellite_71d17978",
+              "Satellite_26791c8a",
+              "Satellite_a7768a58"
+            ],
+            "sids": [
+              "fd01:b39f:f179::1",
+              "fd01:365c:ab78::1",
+              "fd01:71d1:7978::1",
+              "fd01:2679:1c8a::1",
+              "fd01:a776:8a58::1"
+            ],
+            "src": "Satellite_4f15fb67",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.1634033,
+            "dst": "Satellite_26791c8a",
+            "dst_ipv4": "10.0.0.93",
+            "dst_sid": "fd00:2679:1c8a::1",
+            "flow_id": "iperf_auto_flow_21",
+            "path": [
+              "Satellite_38da72ae",
+              "Satellite_8d099d6d",
+              "Satellite_a2269df6",
+              "Satellite_03ab59cf",
+              "Satellite_fdf48ac3",
+              "Satellite_bdef043e",
+              "Satellite_f6908f29",
+              "Satellite_26791c8a"
+            ],
+            "sids": [
+              "fd01:8d09:9d6d::1",
+              "fd01:a226:9df6::1",
+              "fd01:3ab:59cf::1",
+              "fd01:fdf4:8ac3::1",
+              "fd01:bdef:43e::1",
+              "fd01:f690:8f29::1",
+              "fd01:2679:1c8a::1"
+            ],
+            "src": "Satellite_38da72ae",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.520267,
+            "dst": "Satellite_71d17978",
+            "dst_ipv4": "10.0.1.93",
+            "dst_sid": "fd00:71d1:7978::1",
+            "flow_id": "iperf_auto_flow_22",
+            "path": [
+              "Satellite_1cc28aa7",
+              "Satellite_6c745193",
+              "Satellite_1c1c2059",
+              "Satellite_f1add772",
+              "Satellite_a7768a58",
+              "Satellite_26791c8a",
+              "Satellite_71d17978"
+            ],
+            "sids": [
+              "fd01:6c74:5193::1",
+              "fd01:1c1c:2059::1",
+              "fd01:f1ad:d772::1",
+              "fd01:a776:8a58::1",
+              "fd01:2679:1c8a::1",
+              "fd01:71d1:7978::1"
+            ],
+            "src": "Satellite_1cc28aa7",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.5699108,
+            "dst": "Satellite_365cab78",
+            "dst_ipv4": "10.0.0.153",
+            "dst_sid": "fd00:365c:ab78::1",
+            "flow_id": "iperf_auto_flow_23",
+            "path": [
+              "Satellite_6c745193",
+              "Satellite_1cc28aa7",
+              "Satellite_38da72ae",
+              "Satellite_4f15fb67",
+              "Satellite_b39ff179",
+              "Satellite_365cab78"
+            ],
+            "sids": [
+              "fd01:1cc2:8aa7::1",
+              "fd01:38da:72ae::1",
+              "fd01:4f15:fb67::1",
+              "fd01:b39f:f179::1",
+              "fd01:365c:ab78::1"
+            ],
+            "src": "Satellite_6c745193",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446770.8065202,
+            "dst": "Satellite_defd7f24",
+            "dst_ipv4": "10.0.0.229",
+            "dst_sid": "fd00:defd:7f24::1",
+            "flow_id": "iperf_auto_flow_3",
+            "path": [
+              "Satellite_9477b925",
+              "Satellite_26791c8a",
+              "Satellite_f6908f29",
+              "Satellite_bdef043e",
+              "Satellite_fdf48ac3",
+              "Satellite_03ab59cf",
+              "Satellite_a2269df6",
+              "Satellite_8d099d6d",
+              "Satellite_38da72ae",
+              "Satellite_defd7f24"
+            ],
+            "sids": [
+              "fd01:2679:1c8a::1",
+              "fd01:f690:8f29::1",
+              "fd01:bdef:43e::1",
+              "fd01:fdf4:8ac3::1",
+              "fd01:3ab:59cf::1",
+              "fd01:a226:9df6::1",
+              "fd01:8d09:9d6d::1",
+              "fd01:38da:72ae::1",
+              "fd01:defd:7f24::1"
+            ],
+            "src": "Satellite_9477b925",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.0229208,
+            "dst": "Satellite_b090ab91",
+            "dst_ipv4": "10.0.0.185",
+            "dst_sid": "fd00:b090:ab91::1",
+            "flow_id": "iperf_auto_flow_4",
+            "path": [
+              "Satellite_a0a719b8",
+              "Satellite_9477b925",
+              "Satellite_feb19423",
+              "Satellite_bf29f4e1",
+              "Satellite_3b06efad",
+              "Satellite_a8dd35c9",
+              "Satellite_b090ab91"
+            ],
+            "sids": [
+              "fd01:9477:b925::1",
+              "fd01:feb1:9423::1",
+              "fd01:bf29:f4e1::1",
+              "fd01:3b06:efad::1",
+              "fd01:a8dd:35c9::1",
+              "fd01:b090:ab91::1"
+            ],
+            "src": "Satellite_a0a719b8",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.0912397,
+            "dst": "Satellite_a8dd35c9",
+            "dst_ipv4": "10.0.0.53",
+            "dst_sid": "fd00:a8dd:35c9::1",
+            "flow_id": "iperf_auto_flow_5",
+            "path": [
+              "Satellite_04b5dc73",
+              "Satellite_bc1140db",
+              "Satellite_9506d682",
+              "Satellite_defd7f24",
+              "Satellite_b090ab91",
+              "Satellite_a8dd35c9"
+            ],
+            "sids": [
+              "fd01:bc11:40db::1",
+              "fd01:9506:d682::1",
+              "fd01:defd:7f24::1",
+              "fd01:b090:ab91::1",
+              "fd01:a8dd:35c9::1"
+            ],
+            "src": "Satellite_04b5dc73",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.3055363,
+            "dst": "Satellite_365cab78",
+            "dst_ipv4": "10.0.0.153",
+            "dst_sid": "fd00:365c:ab78::1",
+            "flow_id": "iperf_auto_flow_6",
+            "path": [
+              "Satellite_1c1c2059",
+              "Satellite_f1add772",
+              "Satellite_a7768a58",
+              "Satellite_26791c8a",
+              "Satellite_71d17978",
+              "Satellite_365cab78"
+            ],
+            "sids": [
+              "fd01:f1ad:d772::1",
+              "fd01:a776:8a58::1",
+              "fd01:2679:1c8a::1",
+              "fd01:71d1:7978::1",
+              "fd01:365c:ab78::1"
+            ],
+            "src": "Satellite_1c1c2059",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.4637012,
+            "dst": "Satellite_b39ff179",
+            "dst_ipv4": "10.0.0.154",
+            "dst_sid": "fd00:b39f:f179::1",
+            "flow_id": "iperf_auto_flow_7",
+            "path": [
+              "Satellite_f1add772",
+              "Satellite_1c1c2059",
+              "Satellite_6c745193",
+              "Satellite_1cc28aa7",
+              "Satellite_38da72ae",
+              "Satellite_4f15fb67",
+              "Satellite_b39ff179"
+            ],
+            "sids": [
+              "fd01:1c1c:2059::1",
+              "fd01:6c74:5193::1",
+              "fd01:1cc2:8aa7::1",
+              "fd01:38da:72ae::1",
+              "fd01:4f15:fb67::1",
+              "fd01:b39f:f179::1"
+            ],
+            "src": "Satellite_f1add772",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.7824676,
+            "dst": "Satellite_4f15fb67",
+            "dst_ipv4": "10.0.1.41",
+            "dst_sid": "fd00:4f15:fb67::1",
+            "flow_id": "iperf_auto_flow_8",
+            "path": [
+              "Satellite_a7768a58",
+              "Satellite_33d0958a",
+              "Satellite_f6908f29",
+              "Satellite_bdef043e",
+              "Satellite_fdf48ac3",
+              "Satellite_03ab59cf",
+              "Satellite_a2269df6",
+              "Satellite_4f15fb67"
+            ],
+            "sids": [
+              "fd01:33d0:958a::1",
+              "fd01:f690:8f29::1",
+              "fd01:bdef:43e::1",
+              "fd01:fdf4:8ac3::1",
+              "fd01:3ab:59cf::1",
+              "fd01:a226:9df6::1",
+              "fd01:4f15:fb67::1"
+            ],
+            "src": "Satellite_a7768a58",
+            "version": 4
+          },
+          {
+            "applied_at": 1789446771.7588685,
+            "dst": "Satellite_38da72ae",
+            "dst_ipv4": "10.0.1.161",
+            "dst_sid": "fd00:38da:72ae::1",
+            "flow_id": "iperf_auto_flow_9",
+            "path": [
+              "Satellite_26791c8a",
+              "Satellite_f6908f29",
+              "Satellite_3b2b6f64",
+              "Satellite_1a9a0951",
+              "Satellite_ceff7261",
+              "Satellite_be31a9a6",
+              "Satellite_d8b41c61",
+              "Satellite_49c32b31",
+              "Satellite_8d099d6d",
+              "Satellite_38da72ae"
+            ],
+            "sids": [
+              "fd01:f690:8f29::1",
+              "fd01:3b2b:6f64::1",
+              "fd01:1a9a:951::1",
+              "fd01:ceff:7261::1",
+              "fd01:be31:a9a6::1",
+              "fd01:d8b4:1c61::1",
+              "fd01:49c3:2b31::1",
+              "fd01:8d09:9d6d::1",
+              "fd01:38da:72ae::1"
+            ],
+            "src": "Satellite_26791c8a",
+            "version": 4
+          }
+        ],
+        "queued": 0,
+        "sender_elapsed_seconds": 30.04259388499986,
+        "sender_log": "/tmp/leo_te_experiment/sender.log",
+        "solver_elapsed_seconds": 10.757503539000027,
+        "solver_log": "/tmp/leo_te_experiment/solver.log",
+        "solver_output": "====== Lyapunov \u5dee\u5f02\u5316 TE \u5f15\u64ce\u542f\u52a8 ======\n\u914d\u7f6e: V=100.0, K=24, rho=0.9\n\u6d41\u91cf\u7c7b\u522b\u6743\u91cd:\n  class_1_urllc: alpha=10.0, beta=0.1\n  class_2_embb: alpha=1.0, beta=1.0\n  class_3_background: alpha=0.1, beta=10.0\n==================================================\n\n[t] \u68c0\u6d4b\u5230 68 \u4e2a\u8282\u70b9, 246 \u6761\u94fe\u8def\n[t] \u6b63\u5728\u8bc4\u4f30\u5168\u7f51\u961f\u5217\u72b6\u6001...\n[t] \u4ece Redis \u8bfb\u53d6\u5230 24 \u6761\u6d41\u91cf\u9700\u6c42\n[Lyapunov] \u5168\u5c40\u5355\u8def\u5f84\u7b56\u7565: 24/24, \u5019\u9009\u8def\u5f84 K=24, \u9884\u6d4b\u5cf0\u503c\u5229\u7528\u7387=0.590, MILP\u72b6\u6001=0\n[t] \u6700\u4f18\u7b56\u7565\u5df2\u751f\u6210\uff0c\u4e0b\u53d1 SRv6 \u610f\u56fe\uff1a\n  -> \u6d41 [iperf_auto_flow_0] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_3b06efad -> Satellite_bf29f4e1 -> Satellite_feb19423 -> Satellite_9477b925 -> Satellite_a0a719b8 -> Satellite_04b5dc73\n     SID: ['fd00:bf29:f4e1::1', 'fd00:feb1:9423::1', 'fd00:9477:b925::1', 'fd00:a0a7:19b8::1', 'fd00:04b5:dc73::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_1] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_bf29f4e1 -> Satellite_feb19423 -> Satellite_9477b925 -> Satellite_a0a719b8 -> Satellite_04b5dc73 -> Satellite_bc1140db\n     SID: ['fd00:feb1:9423::1', 'fd00:9477:b925::1', 'fd00:a0a7:19b8::1', 'fd00:04b5:dc73::1', 'fd00:bc11:40db::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_10] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_71d17978 -> Satellite_365cab78 -> Satellite_b39ff179 -> Satellite_4f15fb67 -> Satellite_38da72ae -> Satellite_1cc28aa7\n     SID: ['fd00:365c:ab78::1', 'fd00:b39f:f179::1', 'fd00:4f15:fb67::1', 'fd00:38da:72ae::1', 'fd00:1cc2:8aa7::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_11] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_365cab78 -> Satellite_b39ff179 -> Satellite_4f15fb67 -> Satellite_38da72ae -> Satellite_1cc28aa7 -> Satellite_6c745193\n     SID: ['fd00:b39f:f179::1', 'fd00:4f15:fb67::1', 'fd00:38da:72ae::1', 'fd00:1cc2:8aa7::1', 'fd00:6c74:5193::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_12] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_04b5dc73 -> Satellite_a0a719b8 -> Satellite_71d17978 -> Satellite_26791c8a -> Satellite_a7768a58 -> Satellite_f1add772 -> Satellite_1c1c2059 -> Satellite_3b06efad\n     SID: ['fd00:a0a7:19b8::1', 'fd00:71d1:7978::1', 'fd00:2679:1c8a::1', 'fd00:a776:8a58::1', 'fd00:f1ad:d772::1', 'fd00:1c1c:2059::1', 'fd00:3b06:efad::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_13] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_bc1140db -> Satellite_9506d682 -> Satellite_defd7f24 -> Satellite_b090ab91 -> Satellite_a8dd35c9 -> Satellite_3b06efad -> Satellite_bf29f4e1\n     SID: ['fd00:9506:d682::1', 'fd00:defd:7f24::1', 'fd00:b090:ab91::1', 'fd00:a8dd:35c9::1', 'fd00:3b06:efad::1', 'fd00:bf29:f4e1::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_14] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_9506d682 -> Satellite_bc1140db -> Satellite_04b5dc73 -> Satellite_a0a719b8 -> Satellite_9477b925 -> Satellite_feb19423\n     SID: ['fd00:bc11:40db::1', 'fd00:04b5:dc73::1', 'fd00:a0a7:19b8::1', 'fd00:9477:b925::1', 'fd00:feb1:9423::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_15] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_defd7f24 -> Satellite_9506d682 -> Satellite_bc1140db -> Satellite_04b5dc73 -> Satellite_a0a719b8 -> Satellite_9477b925\n     SID: ['fd00:9506:d682::1', 'fd00:bc11:40db::1', 'fd00:04b5:dc73::1', 'fd00:a0a7:19b8::1', 'fd00:9477:b925::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_16] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_b090ab91 -> Satellite_defd7f24 -> Satellite_9506d682 -> Satellite_bc1140db -> Satellite_04b5dc73 -> Satellite_a0a719b8\n     SID: ['fd00:defd:7f24::1', 'fd00:9506:d682::1', 'fd00:bc11:40db::1', 'fd00:04b5:dc73::1', 'fd00:a0a7:19b8::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_17] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_a8dd35c9 -> Satellite_6c745193 -> Satellite_1cc28aa7 -> Satellite_38da72ae -> Satellite_4f15fb67 -> Satellite_9506d682 -> Satellite_bc1140db -> Satellite_04b5dc73\n     SID: ['fd00:6c74:5193::1', 'fd00:1cc2:8aa7::1', 'fd00:38da:72ae::1', 'fd00:4f15:fb67::1', 'fd00:9506:d682::1', 'fd00:bc11:40db::1', 'fd00:04b5:dc73::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_18] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_365cab78 -> Satellite_71d17978 -> Satellite_26791c8a -> Satellite_a7768a58 -> Satellite_f1add772 -> Satellite_1c1c2059\n     SID: ['fd00:71d1:7978::1', 'fd00:2679:1c8a::1', 'fd00:a776:8a58::1', 'fd00:f1ad:d772::1', 'fd00:1c1c:2059::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_19] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_b39ff179 -> Satellite_365cab78 -> Satellite_71d17978 -> Satellite_26791c8a -> Satellite_a7768a58 -> Satellite_f1add772\n     SID: ['fd00:365c:ab78::1', 'fd00:71d1:7978::1', 'fd00:2679:1c8a::1', 'fd00:a776:8a58::1', 'fd00:f1ad:d772::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_2] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_feb19423 -> Satellite_bf29f4e1 -> Satellite_3b06efad -> Satellite_a8dd35c9 -> Satellite_b090ab91 -> Satellite_defd7f24 -> Satellite_9506d682\n     SID: ['fd00:bf29:f4e1::1', 'fd00:3b06:efad::1', 'fd00:a8dd:35c9::1', 'fd00:b090:ab91::1', 'fd00:defd:7f24::1', 'fd00:9506:d682::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_20] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_4f15fb67 -> Satellite_b39ff179 -> Satellite_365cab78 -> Satellite_71d17978 -> Satellite_26791c8a -> Satellite_a7768a58\n     SID: ['fd00:b39f:f179::1', 'fd00:365c:ab78::1', 'fd00:71d1:7978::1', 'fd00:2679:1c8a::1', 'fd00:a776:8a58::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_21] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_38da72ae -> Satellite_8d099d6d -> Satellite_a2269df6 -> Satellite_03ab59cf -> Satellite_fdf48ac3 -> Satellite_bdef043e -> Satellite_f6908f29 -> Satellite_26791c8a\n     SID: ['fd00:8d09:9d6d::1', 'fd00:a226:9df6::1', 'fd00:03ab:59cf::1', 'fd00:fdf4:8ac3::1', 'fd00:bdef:043e::1', 'fd00:f690:8f29::1', 'fd00:2679:1c8a::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_22] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_1cc28aa7 -> Satellite_6c745193 -> Satellite_1c1c2059 -> Satellite_f1add772 -> Satellite_a7768a58 -> Satellite_26791c8a -> Satellite_71d17978\n     SID: ['fd00:6c74:5193::1', 'fd00:1c1c:2059::1', 'fd00:f1ad:d772::1', 'fd00:a776:8a58::1', 'fd00:2679:1c8a::1', 'fd00:71d1:7978::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_23] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_6c745193 -> Satellite_1cc28aa7 -> Satellite_38da72ae -> Satellite_4f15fb67 -> Satellite_b39ff179 -> Satellite_365cab78\n     SID: ['fd00:1cc2:8aa7::1', 'fd00:38da:72ae::1', 'fd00:4f15:fb67::1', 'fd00:b39f:f179::1', 'fd00:365c:ab78::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_3] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_9477b925 -> Satellite_26791c8a -> Satellite_f6908f29 -> Satellite_bdef043e -> Satellite_fdf48ac3 -> Satellite_03ab59cf -> Satellite_a2269df6 -> Satellite_8d099d6d -> Satellite_38da72ae -> Satellite_defd7f24\n     SID: ['fd00:2679:1c8a::1', 'fd00:f690:8f29::1', 'fd00:bdef:043e::1', 'fd00:fdf4:8ac3::1', 'fd00:03ab:59cf::1', 'fd00:a226:9df6::1', 'fd00:8d09:9d6d::1', 'fd00:38da:72ae::1', 'fd00:defd:7f24::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_4] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_a0a719b8 -> Satellite_9477b925 -> Satellite_feb19423 -> Satellite_bf29f4e1 -> Satellite_3b06efad -> Satellite_a8dd35c9 -> Satellite_b090ab91\n     SID: ['fd00:9477:b925::1', 'fd00:feb1:9423::1', 'fd00:bf29:f4e1::1', 'fd00:3b06:efad::1', 'fd00:a8dd:35c9::1', 'fd00:b090:ab91::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_5] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_04b5dc73 -> Satellite_bc1140db -> Satellite_9506d682 -> Satellite_defd7f24 -> Satellite_b090ab91 -> Satellite_a8dd35c9\n     SID: ['fd00:bc11:40db::1', 'fd00:9506:d682::1', 'fd00:defd:7f24::1', 'fd00:b090:ab91::1', 'fd00:a8dd:35c9::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_6] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_1c1c2059 -> Satellite_f1add772 -> Satellite_a7768a58 -> Satellite_26791c8a -> Satellite_71d17978 -> Satellite_365cab78\n     SID: ['fd00:f1ad:d772::1', 'fd00:a776:8a58::1', 'fd00:2679:1c8a::1', 'fd00:71d1:7978::1', 'fd00:365c:ab78::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_7] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_f1add772 -> Satellite_1c1c2059 -> Satellite_6c745193 -> Satellite_1cc28aa7 -> Satellite_38da72ae -> Satellite_4f15fb67 -> Satellite_b39ff179\n     SID: ['fd00:1c1c:2059::1', 'fd00:6c74:5193::1', 'fd00:1cc2:8aa7::1', 'fd00:38da:72ae::1', 'fd00:4f15:fb67::1', 'fd00:b39f:f179::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_8] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_a7768a58 -> Satellite_33d0958a -> Satellite_f6908f29 -> Satellite_bdef043e -> Satellite_fdf48ac3 -> Satellite_03ab59cf -> Satellite_a2269df6 -> Satellite_4f15fb67\n     SID: ['fd00:33d0:958a::1', 'fd00:f690:8f29::1', 'fd00:bdef:043e::1', 'fd00:fdf4:8ac3::1', 'fd00:03ab:59cf::1', 'fd00:a226:9df6::1', 'fd00:4f15:fb67::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n  -> \u6d41 [iperf_auto_flow_9] | \u5360\u6bd4 100% | \u8def\u5f84: Satellite_26791c8a -> Satellite_f6908f29 -> Satellite_3b2b6f64 -> Satellite_1a9a0951 -> Satellite_ceff7261 -> Satellite_be31a9a6 -> Satellite_d8b41c61 -> Satellite_49c32b31 -> Satellite_8d099d6d -> Satellite_38da72ae\n     SID: ['fd00:f690:8f29::1', 'fd00:3b2b:6f64::1', 'fd00:1a9a:0951::1', 'fd00:ceff:7261::1', 'fd00:be31:a9a6::1', 'fd00:d8b4:1c61::1', 'fd00:49c3:2b31::1', 'fd00:8d09:9d6d::1', 'fd00:38da:72ae::1']\n     [publish] \u5df2\u5165\u961f\u5f53\u524d\u4e3b\u8def\u5f84\uff0c\u5360\u6bd4 100%\n[t] \u7b56\u7565\u53d1\u5e03\u5b8c\u6210: \u65b0\u589e/\u53d8\u5316 24 \u6761, \u672a\u53d8\u5316\u8df3\u8fc7 0 \u6761, \u961f\u5217\u957f\u5ea6 24\n"
+      },
+      "te": {
+        "active_flows": 24,
+        "actual_sent_mbps": 76.38159999999999,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.003851398966640221,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.24,
+            "median_mbps": 4.24,
+            "min_mbps": 4.2,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.008480574499424425,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.233333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.12,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.003851398966640221,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.24,
+            "median_mbps": 4.24,
+            "min_mbps": 4.2,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.005336654952351307,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.12,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.0055759470151740065,
+            "max_mbps": 2.136,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.112,
+            "min_mbps": 2.112,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.028259499247059262,
+            "max_mbps": 2.256,
+            "mean_mbps": 2.1220000000000003,
+            "median_mbps": 2.124,
+            "min_mbps": 1.968,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.01217919291260195,
+            "max_mbps": 4.36,
+            "mean_mbps": 4.24,
+            "median_mbps": 4.24,
+            "min_mbps": 4.12,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.004647352539748328,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.2,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.01244538846642174,
+            "max_mbps": 4.36,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.12,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.002605361186453576,
+            "max_mbps": 4.28,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.24,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.009596529806174684,
+            "max_mbps": 4.336,
+            "mean_mbps": 4.243333333333333,
+            "median_mbps": 4.24,
+            "min_mbps": 4.144,
+            "samples": 12
+          }
+        },
+        "min_flow_sent_ratio": 0.9992459943449575,
+        "nominal_sent_mbps": 76.392,
+        "phase": "te_1_1789446776",
+        "samples_per_flow": 12,
+        "sender_flows": {
+          "iperf_auto_flow_0": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_1": {
+            "sent_mbps": 4.242,
+            "sent_packets": 10605,
+            "sent_ratio": 0.9995287464655985,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_10": {
+            "sent_mbps": 4.242,
+            "sent_packets": 10605,
+            "sent_ratio": 0.9995287464655985,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_11": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_12": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_13": {
+            "sent_mbps": 2.1204,
+            "sent_packets": 5301,
+            "sent_ratio": 0.9992459943449575,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_14": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_15": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_16": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_17": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_18": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_19": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_2": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_20": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_21": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_22": {
+            "sent_mbps": 2.122,
+            "sent_packets": 5305,
+            "sent_ratio": 1.0,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_23": {
+            "sent_mbps": 2.1216,
+            "sent_packets": 5304,
+            "sent_ratio": 0.9998114985862394,
+            "target_packets": 5305
+          },
+          "iperf_auto_flow_3": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_4": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_5": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_6": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_7": {
+            "sent_mbps": 4.242,
+            "sent_packets": 10605,
+            "sent_ratio": 0.9995287464655985,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_8": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          },
+          "iperf_auto_flow_9": {
+            "sent_mbps": 4.244,
+            "sent_packets": 10610,
+            "sent_ratio": 1.0,
+            "target_packets": 10610
+          }
+        },
+        "sent_load_ratio": 0.9998638600900618,
+        "total_cv": 0.003548893625172901,
+        "total_max_mbps": 76.75200000000002,
+        "total_mean_mbps": 76.36200000000001,
+        "total_median_mbps": 76.38400000000001,
+        "total_min_mbps": 75.792,
+        "total_series_mbps": [
+          76.60000000000001,
+          76.272,
+          76.44000000000001,
+          76.31200000000003,
+          76.29600000000002,
+          76.54400000000001,
+          76.32800000000002,
+          76.48000000000002,
+          75.792,
+          76.75200000000002,
+          76.62400000000001,
+          75.90400000000002
+        ]
+      }
+    }
+  ],
+  "experiment": {
+    "cycles": 1,
+    "demand_rates_kbps": [
+      2122.222222,
+      4244.444444
+    ],
+    "elapsed_seconds": 135.24175834655762,
+    "expected_flows": 24,
+    "host_resources_at_start": {
+      "available_mib": 363.5,
+      "memory_full_stall_avg10_percent": 0.14
+    },
+    "input_offered_load_kbps": 76399.99999199997,
+    "max_samples": 12,
+    "measure_seconds": 20.0,
+    "min_samples": 10,
+    "offered_load_kbps": 76399.99999199997,
+    "ospf": {
+      "max_routes": 318,
+      "min_routes": 119,
+      "nodes": 66
+    },
+    "protocol": "udp-native",
+    "report_only": true,
+    "scenario": {
+      "failure_step": "0",
+      "geometry_time": "2026-09-14T16:25:00"
+    },
+    "standard": {
+      "pid": null,
+      "state": "not_running"
+    },
+    "started_unix": 1789446683.7289958,
+    "telemetry_nodes": 68,
+    "topology": {
+      "down_links": 0,
+      "last_update_unix": "1789446683.600848",
+      "links": 246,
+      "nodes": 68,
+      "snapshot_sha256": "468db8b6a874f7974aefac0f895b02095e53595e12fd239a7d4a7c5245ec304d",
+      "up_links": 246
+    },
+    "warmup_samples": 2
+  },
+  "improvement_stable": true,
+  "improvement_stddev_percent": 0.0,
+  "max_improvement_stddev_percent": 3.0,
+  "max_paired_sent_difference_percent": 1.0,
+  "max_phase_cv_percent": 5.0,
+  "mean_improvement_percent": 39.06756510653798,
+  "paired_load_valid": true,
+  "phase_stable": true,
+  "status": "completed",
+  "target_high_percent": 23.0,
+  "target_low_percent": 17.0,
+  "target_met": false
+}

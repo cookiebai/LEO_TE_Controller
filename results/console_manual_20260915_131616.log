@@ -1,0 +1,8 @@
+OSPF health passed: 66/66 nodes, min_routes=119
+offered load=76400.000 Kbps flows=24
+====== OpenSN topology sniffer started ======
+[topology] containers=68 directed_links=246 up=246 down=0 capacity=16.00-16.00 Mbps delay=2.36-14.30 ms
+[baseline_1] deleted 48 SRv6 encap routes
+[baseline_1] 24 synchronized receiver-side sessions, protocol=udp-native, duration=20s
+[baseline_1] mean=56.43 Mbps median=56.39 Mbps CV=0.81% sent=76.35/76.39 Mbps flows=24
+experiment failed: host cannot support a valid stable experiment: MemAvailable=392.5 MiB (required >= 350.0), memory full-stall avg10=5.60% (required <= 5.00%). Free memory or increase VM RAM before retrying.

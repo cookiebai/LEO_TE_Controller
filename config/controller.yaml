@@ -20,10 +20,15 @@ network:
 
   # 新增: Lyapunov 优化器配置
 lyapunov_engine:
-  polling_interval_ms: 2000          # 求解周期 (2秒一次)
+  polling_interval_ms: 5000          # 连续模式求解周期；主循环会严格休眠
   v_parameter: 100.0                 # V 值：平衡延迟与拥塞
-  max_k_paths: 3                     # KSP 算法的备选路径数量 K
-  capacity_rho: 0.3                  # 链路容量切片阈值 (留下15%给C++的分布式底层流)
+  max_k_paths: 24                    # 为全局单路径模型提供足够的绕行候选
+  capacity_rho: 0.90                 # 为 OSPF/控制流保留 10% 链路容量
+  min_policy_dwell_seconds: 20       # 防止队列瞬时抖动造成路径来回切换
+  max_policy_queue_len: 128
+  policy_state_key: "te:policy:last_signature"
+  policy_details_key: "te:policy:desired"
+  policy_changed_at_key: "te:policy:changed_at"
   
   traffic_classes:
     class_1_urllc:                   # 高优控制流

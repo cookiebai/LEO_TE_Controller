@@ -1,0 +1,933 @@
+{
+  "cycles": [
+    {
+      "baseline": {
+        "active_flows": 24,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.11849395342730894,
+            "max_mbps": 3.664,
+            "mean_mbps": 3.0993333333333335,
+            "median_mbps": 3.112,
+            "min_mbps": 2.472,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.07079522779575087,
+            "max_mbps": 3.672,
+            "mean_mbps": 3.1926666666666663,
+            "median_mbps": 3.136,
+            "min_mbps": 2.896,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.06715055196771458,
+            "max_mbps": 2.552,
+            "mean_mbps": 2.291333333333333,
+            "median_mbps": 2.304,
+            "min_mbps": 2.072,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.12798280117290342,
+            "max_mbps": 3.408,
+            "mean_mbps": 2.905333333333333,
+            "median_mbps": 2.96,
+            "min_mbps": 2.128,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.16346032785999776,
+            "max_mbps": 1.784,
+            "mean_mbps": 1.4326666666666668,
+            "median_mbps": 1.46,
+            "min_mbps": 0.848,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.02635894380302185,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.182,
+            "median_mbps": 2.2,
+            "min_mbps": 1.992,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.04721576251484575,
+            "max_mbps": 2.2,
+            "mean_mbps": 2.156,
+            "median_mbps": 2.2,
+            "min_mbps": 1.872,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.002328325476771329,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.1993333333333336,
+            "median_mbps": 2.2,
+            "min_mbps": 2.192,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.0017922083559829207,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.2006666666666668,
+            "median_mbps": 2.2,
+            "min_mbps": 2.192,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.004658062915626813,
+            "max_mbps": 2.216,
+            "mean_mbps": 2.1986666666666665,
+            "median_mbps": 2.2,
+            "min_mbps": 2.176,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.14506702969521906,
+            "max_mbps": 1.84,
+            "mean_mbps": 1.5993333333333333,
+            "median_mbps": 1.652,
+            "min_mbps": 0.96,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.03207275507227968,
+            "max_mbps": 2.216,
+            "mean_mbps": 2.169333333333334,
+            "median_mbps": 2.2,
+            "min_mbps": 1.992,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.07851096089499592,
+            "max_mbps": 3.752,
+            "mean_mbps": 3.324666666666667,
+            "median_mbps": 3.3120000000000003,
+            "min_mbps": 2.904,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.002099455524325914,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.2,
+            "median_mbps": 2.2,
+            "min_mbps": 2.192,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.0025712973861329023,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.2,
+            "median_mbps": 2.2,
+            "min_mbps": 2.192,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.025070186942988727,
+            "max_mbps": 2.2,
+            "mean_mbps": 2.176,
+            "median_mbps": 2.2,
+            "min_mbps": 2.032,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.0784292333317046,
+            "max_mbps": 1.856,
+            "mean_mbps": 1.6533333333333333,
+            "median_mbps": 1.652,
+            "min_mbps": 1.432,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.13968431205937826,
+            "max_mbps": 4.008,
+            "mean_mbps": 3.438,
+            "median_mbps": 3.588,
+            "min_mbps": 2.544,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.09818555024837614,
+            "max_mbps": 2.56,
+            "mean_mbps": 2.294,
+            "median_mbps": 2.288,
+            "min_mbps": 1.888,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.20067201952638763,
+            "max_mbps": 3.552,
+            "mean_mbps": 2.7146666666666666,
+            "median_mbps": 2.648,
+            "min_mbps": 1.616,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.0643114427214877,
+            "max_mbps": 3.344,
+            "mean_mbps": 3.108,
+            "median_mbps": 3.14,
+            "min_mbps": 2.552,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.08389517426220595,
+            "max_mbps": 3.456,
+            "mean_mbps": 3.138666666666667,
+            "median_mbps": 3.216,
+            "min_mbps": 2.464,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.06084309034891288,
+            "max_mbps": 3.424,
+            "mean_mbps": 3.1466666666666665,
+            "median_mbps": 3.164,
+            "min_mbps": 2.76,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.15976065293793906,
+            "max_mbps": 2.72,
+            "mean_mbps": 2.012,
+            "median_mbps": 1.912,
+            "min_mbps": 1.68,
+            "samples": 12
+          }
+        },
+        "phase": "baseline_1_1789113549",
+        "samples_per_flow": 12,
+        "total_cv": 0.017647002168836235,
+        "total_max_mbps": 60.46400000000001,
+        "total_mean_mbps": 59.03266666666667,
+        "total_median_mbps": 59.108,
+        "total_min_mbps": 56.751999999999995,
+        "total_series_mbps": [
+          58.967999999999996,
+          58.45600000000001,
+          56.751999999999995,
+          59.328,
+          59.248,
+          58.272000000000006,
+          58.90400000000001,
+          60.46400000000001,
+          60.04800000000001,
+          57.864,
+          60.40799999999999,
+          59.67999999999999
+        ]
+      },
+      "cycle": 1,
+      "improvement_percent": 11.223164575545736,
+      "ping": {
+        "policies": 24,
+        "srv6_ipv4_ping_failed": [],
+        "srv6_ipv4_ping_ok": 24,
+        "srv6_ipv6_ping_failed": [],
+        "srv6_ipv6_ping_ok": 24
+      },
+      "policy": {
+        "applied": 24,
+        "desired": 24,
+        "queued": 0
+      },
+      "te": {
+        "active_flows": 24,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.08347213324716665,
+            "max_mbps": 4.52,
+            "mean_mbps": 4.149333333333334,
+            "median_mbps": 4.28,
+            "min_mbps": 3.472,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.10817039474325821,
+            "max_mbps": 4.464,
+            "mean_mbps": 3.8346666666666667,
+            "median_mbps": 3.952,
+            "min_mbps": 3.168,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.1265296415400246,
+            "max_mbps": 4.752,
+            "mean_mbps": 3.9306666666666668,
+            "median_mbps": 3.976,
+            "min_mbps": 2.976,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.35698300522377363,
+            "max_mbps": 3.216,
+            "mean_mbps": 1.9413333333333334,
+            "median_mbps": 1.704,
+            "min_mbps": 1.04,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.16603316855132186,
+            "max_mbps": 1.336,
+            "mean_mbps": 1.0753333333333333,
+            "median_mbps": 1.12,
+            "min_mbps": 0.768,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.09076801631499981,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.056,
+            "median_mbps": 2.08,
+            "min_mbps": 1.52,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.2024243384879391,
+            "max_mbps": 2.192,
+            "mean_mbps": 1.8833333333333335,
+            "median_mbps": 2.0,
+            "min_mbps": 0.712,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.09256906389685905,
+            "max_mbps": 2.208,
+            "mean_mbps": 1.9553333333333336,
+            "median_mbps": 1.972,
+            "min_mbps": 1.608,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.08710672981730996,
+            "max_mbps": 2.264,
+            "mean_mbps": 1.984,
+            "median_mbps": 1.984,
+            "min_mbps": 1.64,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.05878753769121577,
+            "max_mbps": 2.264,
+            "mean_mbps": 2.0126666666666666,
+            "median_mbps": 1.996,
+            "min_mbps": 1.808,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.23473057803679998,
+            "max_mbps": 1.456,
+            "mean_mbps": 1.014,
+            "median_mbps": 0.96,
+            "min_mbps": 0.728,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.12519775704312144,
+            "max_mbps": 2.352,
+            "mean_mbps": 1.992,
+            "median_mbps": 2.044,
+            "min_mbps": 1.36,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.12770979655546566,
+            "max_mbps": 4.4,
+            "mean_mbps": 3.872,
+            "median_mbps": 3.916,
+            "min_mbps": 2.912,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.08166659090635109,
+            "max_mbps": 2.224,
+            "mean_mbps": 2.0766666666666667,
+            "median_mbps": 2.196,
+            "min_mbps": 1.672,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.06138761998392906,
+            "max_mbps": 2.216,
+            "mean_mbps": 1.9966666666666668,
+            "median_mbps": 2.04,
+            "min_mbps": 1.72,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.1290230363444367,
+            "max_mbps": 2.36,
+            "mean_mbps": 1.998,
+            "median_mbps": 2.076,
+            "min_mbps": 1.344,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.122183650194908,
+            "max_mbps": 2.512,
+            "mean_mbps": 2.0946666666666665,
+            "median_mbps": 2.128,
+            "min_mbps": 1.416,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.12862691444954744,
+            "max_mbps": 4.504,
+            "mean_mbps": 3.876,
+            "median_mbps": 4.1240000000000006,
+            "min_mbps": 2.76,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.08376498260689187,
+            "max_mbps": 4.416,
+            "mean_mbps": 4.008,
+            "median_mbps": 4.068,
+            "min_mbps": 3.48,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.19078872021089766,
+            "max_mbps": 2.472,
+            "mean_mbps": 1.9546666666666666,
+            "median_mbps": 2.012,
+            "min_mbps": 1.232,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.0693564738672052,
+            "max_mbps": 4.592,
+            "mean_mbps": 4.193333333333333,
+            "median_mbps": 4.32,
+            "min_mbps": 3.728,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.09889202661226873,
+            "max_mbps": 4.544,
+            "mean_mbps": 3.8486666666666665,
+            "median_mbps": 3.732,
+            "min_mbps": 3.312,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.07720250541983849,
+            "max_mbps": 4.4,
+            "mean_mbps": 3.8333333333333335,
+            "median_mbps": 3.852,
+            "min_mbps": 3.328,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.11149976258731793,
+            "max_mbps": 4.48,
+            "mean_mbps": 4.077333333333334,
+            "median_mbps": 4.272,
+            "min_mbps": 2.896,
+            "samples": 12
+          }
+        },
+        "phase": "te_1_1789113645",
+        "samples_per_flow": 12,
+        "total_cv": 0.04551253011149063,
+        "total_max_mbps": 69.784,
+        "total_mean_mbps": 65.658,
+        "total_median_mbps": 65.67599999999999,
+        "total_min_mbps": 61.103999999999985,
+        "total_series_mbps": [
+          69.728,
+          68.28800000000001,
+          67.01599999999999,
+          61.73599999999998,
+          61.67999999999999,
+          64.408,
+          65.464,
+          61.103999999999985,
+          64.15200000000002,
+          68.64800000000001,
+          69.784,
+          65.88799999999999
+        ]
+      }
+    },
+    {
+      "baseline": {
+        "active_flows": 24,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.06892135061989588,
+            "max_mbps": 3.88,
+            "mean_mbps": 3.49,
+            "median_mbps": 3.472,
+            "min_mbps": 3.096,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.07159738406072702,
+            "max_mbps": 3.768,
+            "mean_mbps": 3.25,
+            "median_mbps": 3.184,
+            "min_mbps": 2.92,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.09030022916474854,
+            "max_mbps": 2.576,
+            "mean_mbps": 2.328,
+            "median_mbps": 2.372,
+            "min_mbps": 1.736,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.15061615404612255,
+            "max_mbps": 3.76,
+            "mean_mbps": 2.9013333333333335,
+            "median_mbps": 2.92,
+            "min_mbps": 2.208,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.13195587266332298,
+            "max_mbps": 1.736,
+            "mean_mbps": 1.3853333333333333,
+            "median_mbps": 1.3639999999999999,
+            "min_mbps": 1.136,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.03584588249199529,
+            "max_mbps": 2.248,
+            "mean_mbps": 2.1646666666666667,
+            "median_mbps": 2.2,
+            "min_mbps": 1.952,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.09112122465857424,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.062666666666667,
+            "median_mbps": 2.192,
+            "min_mbps": 1.656,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.05258123375810434,
+            "max_mbps": 2.264,
+            "mean_mbps": 2.1573333333333333,
+            "median_mbps": 2.2,
+            "min_mbps": 1.848,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.0061209120838558095,
+            "max_mbps": 2.232,
+            "mean_mbps": 2.2,
+            "median_mbps": 2.2,
+            "min_mbps": 2.168,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.048035469246905174,
+            "max_mbps": 2.336,
+            "mean_mbps": 2.186666666666667,
+            "median_mbps": 2.2,
+            "min_mbps": 1.952,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.09317673142329487,
+            "max_mbps": 1.872,
+            "mean_mbps": 1.4973333333333334,
+            "median_mbps": 1.456,
+            "min_mbps": 1.288,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.07704259253208315,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.126,
+            "median_mbps": 2.2,
+            "min_mbps": 1.752,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.07724099461366243,
+            "max_mbps": 3.872,
+            "mean_mbps": 3.5126666666666666,
+            "median_mbps": 3.544,
+            "min_mbps": 2.968,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.056987931988507684,
+            "max_mbps": 2.288,
+            "mean_mbps": 2.1393333333333335,
+            "median_mbps": 2.2,
+            "min_mbps": 1.816,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.04395700237600392,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.142,
+            "median_mbps": 2.192,
+            "min_mbps": 1.936,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.02630178050334483,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.1733333333333333,
+            "median_mbps": 2.2,
+            "min_mbps": 2.024,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.06545248399145015,
+            "max_mbps": 1.704,
+            "mean_mbps": 1.54,
+            "median_mbps": 1.576,
+            "min_mbps": 1.304,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.046930865366969,
+            "max_mbps": 3.408,
+            "mean_mbps": 3.1893333333333334,
+            "median_mbps": 3.2,
+            "min_mbps": 2.944,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.08808701136496057,
+            "max_mbps": 2.168,
+            "mean_mbps": 1.896,
+            "median_mbps": 1.884,
+            "min_mbps": 1.528,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.1833288702857792,
+            "max_mbps": 3.312,
+            "mean_mbps": 2.4133333333333336,
+            "median_mbps": 2.296,
+            "min_mbps": 1.728,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.09995027272174434,
+            "max_mbps": 3.464,
+            "mean_mbps": 3.048,
+            "median_mbps": 3.108,
+            "min_mbps": 2.336,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.08397280113191338,
+            "max_mbps": 3.424,
+            "mean_mbps": 3.1026666666666665,
+            "median_mbps": 3.18,
+            "min_mbps": 2.632,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.08028729137618845,
+            "max_mbps": 3.472,
+            "mean_mbps": 3.118,
+            "median_mbps": 3.124,
+            "min_mbps": 2.584,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.08036575771170815,
+            "max_mbps": 2.584,
+            "mean_mbps": 2.212666666666667,
+            "median_mbps": 2.188,
+            "min_mbps": 1.88,
+            "samples": 12
+          }
+        },
+        "phase": "baseline_2_1789113706",
+        "samples_per_flow": 12,
+        "total_cv": 0.012024229856677409,
+        "total_max_mbps": 59.76000000000002,
+        "total_mean_mbps": 58.23666666666667,
+        "total_median_mbps": 57.98799999999999,
+        "total_min_mbps": 57.448,
+        "total_series_mbps": [
+          58.648,
+          57.784,
+          57.448,
+          57.53600000000001,
+          58.04,
+          57.544,
+          59.76000000000002,
+          57.935999999999986,
+          57.928,
+          58.36,
+          59.37600000000002,
+          58.480000000000004
+        ]
+      },
+      "cycle": 2,
+      "improvement_percent": 18.793429111098373,
+      "ping": {
+        "policies": 24,
+        "srv6_ipv4_ping_failed": [],
+        "srv6_ipv4_ping_ok": 24,
+        "srv6_ipv6_ping_failed": [],
+        "srv6_ipv6_ping_ok": 24
+      },
+      "policy": {
+        "applied": 24,
+        "desired": 24,
+        "queued": 0
+      },
+      "te": {
+        "active_flows": 24,
+        "flows": {
+          "iperf_auto_flow_0": {
+            "cv": 0.06043439033480609,
+            "max_mbps": 5.152,
+            "mean_mbps": 4.3853333333333335,
+            "median_mbps": 4.356,
+            "min_mbps": 4.096,
+            "samples": 12
+          },
+          "iperf_auto_flow_1": {
+            "cv": 0.07838293011453627,
+            "max_mbps": 4.48,
+            "mean_mbps": 4.181333333333334,
+            "median_mbps": 4.372,
+            "min_mbps": 3.632,
+            "samples": 12
+          },
+          "iperf_auto_flow_10": {
+            "cv": 0.0601269730281044,
+            "max_mbps": 4.416,
+            "mean_mbps": 3.9760000000000004,
+            "median_mbps": 3.896,
+            "min_mbps": 3.68,
+            "samples": 12
+          },
+          "iperf_auto_flow_11": {
+            "cv": 0.22306385662036976,
+            "max_mbps": 3.144,
+            "mean_mbps": 2.2013333333333334,
+            "median_mbps": 2.2199999999999998,
+            "min_mbps": 1.224,
+            "samples": 12
+          },
+          "iperf_auto_flow_12": {
+            "cv": 0.22124378109590945,
+            "max_mbps": 1.528,
+            "mean_mbps": 1.1253333333333333,
+            "median_mbps": 1.072,
+            "min_mbps": 0.744,
+            "samples": 12
+          },
+          "iperf_auto_flow_13": {
+            "cv": 0.08289586721688011,
+            "max_mbps": 2.2,
+            "mean_mbps": 2.036,
+            "median_mbps": 2.076,
+            "min_mbps": 1.672,
+            "samples": 12
+          },
+          "iperf_auto_flow_14": {
+            "cv": 0.11303674998959777,
+            "max_mbps": 2.232,
+            "mean_mbps": 2.0180000000000002,
+            "median_mbps": 2.056,
+            "min_mbps": 1.344,
+            "samples": 12
+          },
+          "iperf_auto_flow_15": {
+            "cv": 0.06067693666976696,
+            "max_mbps": 2.24,
+            "mean_mbps": 2.1153333333333335,
+            "median_mbps": 2.192,
+            "min_mbps": 1.8,
+            "samples": 12
+          },
+          "iperf_auto_flow_16": {
+            "cv": 0.059783607162374276,
+            "max_mbps": 2.232,
+            "mean_mbps": 2.1213333333333337,
+            "median_mbps": 2.196,
+            "min_mbps": 1.856,
+            "samples": 12
+          },
+          "iperf_auto_flow_17": {
+            "cv": 0.0533172674839766,
+            "max_mbps": 2.264,
+            "mean_mbps": 2.0900000000000003,
+            "median_mbps": 2.096,
+            "min_mbps": 1.88,
+            "samples": 12
+          },
+          "iperf_auto_flow_18": {
+            "cv": 0.16417562262052074,
+            "max_mbps": 1.608,
+            "mean_mbps": 1.2473333333333334,
+            "median_mbps": 1.264,
+            "min_mbps": 0.952,
+            "samples": 12
+          },
+          "iperf_auto_flow_19": {
+            "cv": 0.09321159705962172,
+            "max_mbps": 2.232,
+            "mean_mbps": 2.030666666666667,
+            "median_mbps": 2.068,
+            "min_mbps": 1.72,
+            "samples": 12
+          },
+          "iperf_auto_flow_2": {
+            "cv": 0.05904571338463836,
+            "max_mbps": 4.448,
+            "mean_mbps": 4.200666666666667,
+            "median_mbps": 4.324,
+            "min_mbps": 3.696,
+            "samples": 12
+          },
+          "iperf_auto_flow_20": {
+            "cv": 0.036097731422975385,
+            "max_mbps": 2.264,
+            "mean_mbps": 2.1246666666666667,
+            "median_mbps": 2.112,
+            "min_mbps": 1.992,
+            "samples": 12
+          },
+          "iperf_auto_flow_21": {
+            "cv": 0.06542026653708204,
+            "max_mbps": 2.208,
+            "mean_mbps": 2.116,
+            "median_mbps": 2.196,
+            "min_mbps": 1.76,
+            "samples": 12
+          },
+          "iperf_auto_flow_22": {
+            "cv": 0.12829370950336427,
+            "max_mbps": 2.208,
+            "mean_mbps": 1.9953333333333336,
+            "median_mbps": 2.136,
+            "min_mbps": 1.512,
+            "samples": 12
+          },
+          "iperf_auto_flow_23": {
+            "cv": 0.11755764926067047,
+            "max_mbps": 2.504,
+            "mean_mbps": 2.1173333333333333,
+            "median_mbps": 2.168,
+            "min_mbps": 1.624,
+            "samples": 12
+          },
+          "iperf_auto_flow_3": {
+            "cv": 0.07056506132093054,
+            "max_mbps": 4.416,
+            "mean_mbps": 4.042666666666666,
+            "median_mbps": 4.144,
+            "min_mbps": 3.44,
+            "samples": 12
+          },
+          "iperf_auto_flow_4": {
+            "cv": 0.050460547301480994,
+            "max_mbps": 4.416,
+            "mean_mbps": 4.153333333333333,
+            "median_mbps": 4.168,
+            "min_mbps": 3.84,
+            "samples": 12
+          },
+          "iperf_auto_flow_5": {
+            "cv": 0.22662705019722154,
+            "max_mbps": 3.072,
+            "mean_mbps": 2.3506666666666667,
+            "median_mbps": 2.472,
+            "min_mbps": 1.232,
+            "samples": 12
+          },
+          "iperf_auto_flow_6": {
+            "cv": 0.09171297064745675,
+            "max_mbps": 4.784,
+            "mean_mbps": 4.231333333333333,
+            "median_mbps": 4.16,
+            "min_mbps": 3.56,
+            "samples": 12
+          },
+          "iperf_auto_flow_7": {
+            "cv": 0.06178192965906931,
+            "max_mbps": 4.416,
+            "mean_mbps": 4.117333333333334,
+            "median_mbps": 4.148,
+            "min_mbps": 3.616,
+            "samples": 12
+          },
+          "iperf_auto_flow_8": {
+            "cv": 0.050460872395387865,
+            "max_mbps": 4.464,
+            "mean_mbps": 4.208,
+            "median_mbps": 4.272,
+            "min_mbps": 3.832,
+            "samples": 12
+          },
+          "iperf_auto_flow_9": {
+            "cv": 0.12299012704059178,
+            "max_mbps": 4.464,
+            "mean_mbps": 3.9960000000000004,
+            "median_mbps": 4.088,
+            "min_mbps": 2.72,
+            "samples": 12
+          }
+        },
+        "phase": "te_2_1789113802",
+        "samples_per_flow": 12,
+        "total_cv": 0.038008968944039406,
+        "total_max_mbps": 73.224,
+        "total_mean_mbps": 69.18133333333333,
+        "total_median_mbps": 68.8,
+        "total_min_mbps": 64.704,
+        "total_series_mbps": [
+          65.35199999999999,
+          68.184,
+          68.384,
+          70.32000000000001,
+          68.752,
+          64.704,
+          67.34400000000001,
+          72.52,
+          72.91999999999999,
+          68.848,
+          69.624,
+          73.224
+        ]
+      }
+    }
+  ],
+  "experiment": {
+    "cycles": 2,
+    "demand_rates_kbps": [
+      2200.0,
+      4400.0
+    ],
+    "expected_flows": 24,
+    "input_offered_load_kbps": 79200.0,
+    "max_samples": 12,
+    "measure_seconds": 20.0,
+    "min_samples": 10,
+    "offered_load_kbps": 79200.0,
+    "protocol": "udp-native",
+    "telemetry_nodes": 68,
+    "topology": {
+      "links": 246,
+      "nodes": 68
+    },
+    "warmup_samples": 2
+  },
+  "improvement_stddev_percent": 3.7851322677763184,
+  "mean_improvement_percent": 15.008296843322054,
+  "target_high_percent": 23.0,
+  "target_low_percent": 17.0,
+  "target_met": false
+}
