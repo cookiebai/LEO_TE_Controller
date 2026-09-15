@@ -113,6 +113,14 @@ class AcceptanceTests(unittest.TestCase):
 
 
 class ResourceTests(unittest.TestCase):
+    def test_changed_topology_is_rejected_between_phases(self):
+        with patch.object(experiment, 'run', return_value=argparse.Namespace(stdout='snapshot')), patch.object(
+            experiment, 'validate_topology_snapshot',
+            return_value={'snapshot_sha256': 'changed', '_node_names': ['sat-a']},
+        ):
+            with self.assertRaisesRegex(RuntimeError, 'topology changed'):
+                experiment.verify_frozen_topology(None, [], 'original')
+
     def test_memory_pressure_refuses_measurement(self):
         args = argparse.Namespace(
             min_host_available_mib=512, max_host_memory_stall_percent=5,

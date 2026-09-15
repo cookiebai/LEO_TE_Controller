@@ -1,0 +1,12 @@
+{
+  "offered_load_kbps": 90000,
+  "target_low_percent": 14,
+  "target_high_percent": 16,
+  "topology_sha256": "d28c694300f078f87ba85bfc445254f54002e0d7a1a2c52d8608e8c5222a1d82",
+  "fixed_time": "2026-09-14T16:25:00",
+  "formal_cycles": 3,
+  "formal_seconds": 25,
+  "calibration_directory": "/home/lenovo/bxr_lab/LEO_TE_Controller/results/calibration/20260916_192134",
+  "formal_passed": true,
+  "formal_result": "/home/lenovo/bxr_lab/LEO_TE_Controller/results/runs/20260916_192648_1696988"
+}

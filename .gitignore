@@ -5,6 +5,9 @@ __pycache__/
 .venv/
 venv/
 results/runs/
+results/calibration/
 results/latest
+results/srv6-runs/
+results/srv6-latest
 *.tmp
 *.swp

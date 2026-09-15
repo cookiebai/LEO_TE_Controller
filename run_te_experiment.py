@@ -21,12 +21,12 @@ SOLVER = ROOT / "python_te_solver" / "lyapunov_solver.py"
 SENDER = ROOT / "python_bgp_gateway" / "sr_policy_sender.py"
 SNIFFER = ROOT / "python_bgp_gateway" / "topo_sniffer.py"
 RESULT_DIR = Path(
-    os.environ.get("LEO_TE_RUNTIME_DIR", "/tmp/leo_te_experiment")
+    os.environ.get("LEO_TE_RUNTIME_DIR", str(ROOT / "results" / "tmp"))
 )
 CONTAINER_RESULT_DIR = "/share/user/te_experiment"
 UDP_PROBE = ROOT / "udp_flow_probe.py"
 CONTAINER_UDP_PROBE = "/tmp/leo_te_udp_flow_probe.py"
-STANDARD_DIR = ROOT.parent / "OpenSN-Library" / "TopoConfigurators" / "Standard"
+STANDARD_DIR = Path(os.environ.get("OPEN_SN_DIR", str(ROOT.parent / "OpenSN-Library"))) / "TopoConfigurators" / "Standard"
 FROZEN_STANDARD_PID = None
 CLEANUP_REQUIRED = False
 
@@ -67,20 +67,23 @@ def satellite_containers():
 
 def stop_existing_controllers():
     current_pid = os.getpid()
-    result = run(["ps", "-eo", "pid=,args="], check=False)
     stopped = []
-    for line in result.stdout.splitlines():
-        parts = line.strip().split(maxsplit=1)
-        if len(parts) != 2:
+    targets = {SOLVER.resolve(), SENDER.resolve()}
+    for entry in Path('/proc').iterdir():
+        if not entry.name.isdigit():
             continue
-        pid = int(parts[0])
-        command = parts[1]
+        pid = int(entry.name)
         if pid == current_pid:
             continue
-        if (
-            "lyapunov_solver.py" not in command
-            and "sr_policy_sender.py" not in command
-        ):
+        try:
+            args = [arg.decode(errors='replace') for arg in (entry / 'cmdline').read_bytes().split(b'\0') if arg]
+            cwd = (entry / 'cwd').resolve()
+            if not args or not Path(args[0]).name.startswith('python'):
+                continue
+            matches = any((cwd / arg).resolve() in targets for arg in args[1:] if arg.endswith('.py'))
+        except (OSError, RuntimeError):
+            continue
+        if not matches:
             continue
         try:
             os.kill(pid, signal.SIGTERM)
@@ -271,8 +274,15 @@ def repair_container_ospf(container):
         "mv /var/run/frr/ospfd.vty /var/run/frr/ospfd.vty.stale.$stamp; "
         "/usr/lib/frr/ospfd -d -F traditional -A 127.0.0.1 || exit 1; "
         "sleep 1; "
-        "vtysh -f /etc/frr/batch.txt || exit 1; "
-        "fi"
+        "fi; "
+        # Rebuild one complete batch. The container daemon applies one link at
+        # a time; hundreds of concurrent vtysh calls can leave a live ospfd
+        # with only a subset of its interfaces configured.
+        "{ printf 'router ospf\\n    redistribute connected\\n'; "
+        "ip -o -4 addr show | awk '$4 ~ /^10\\./ "
+        "{printf \"    network %s area 0.0.0.0\\n\", $4}'; "
+        "} > /etc/frr/batch.txt; "
+        "vtysh -f /etc/frr/batch.txt || exit 1"
     )
     run(["docker", "exec", container, "sh", "-c", command], timeout=20)
 
@@ -283,15 +293,18 @@ def ensure_ospf_health(min_routes=100, timeout_seconds=60):
         raise RuntimeError("no running Satellite containers")
 
     def scan():
-        with ThreadPoolExecutor(max_workers=4) as executor:
+        with ThreadPoolExecutor(max_workers=min(16, len(containers))) as executor:
             return list(executor.map(container_ospf_health, containers))
 
     health = scan()
-    dead = [item["container"] for item in health if not item["live"]]
-    if dead:
-        print(f"repairing dead ospfd on {dead}", flush=True)
-        with ThreadPoolExecutor(max_workers=4) as executor:
-            list(executor.map(repair_container_ospf, dead))
+    needs_repair = [
+        item["container"] for item in health
+        if not item["live"] or item["routes"] < min_routes
+    ]
+    if needs_repair:
+        print(f"repairing incomplete ospf configuration on {len(needs_repair)} nodes", flush=True)
+        with ThreadPoolExecutor(max_workers=min(16, len(needs_repair))) as executor:
+            list(executor.map(repair_container_ospf, needs_repair))
 
     deadline = time.monotonic() + timeout_seconds
     while True:
@@ -311,6 +324,15 @@ def ensure_ospf_health(min_routes=100, timeout_seconds=60):
             raise RuntimeError(f"OSPF health did not converge: {unhealthy}")
         print(f"waiting for OSPF: unhealthy={len(unhealthy)}", flush=True)
         time.sleep(5)
+
+
+def reconfigure_all_ospf():
+    containers = satellite_containers()
+    if not containers:
+        raise RuntimeError("no running Satellite containers")
+    print(f"rebuilding complete ospf interface configuration on {len(containers)} nodes", flush=True)
+    with ThreadPoolExecutor(max_workers=min(16, len(containers))) as executor:
+        list(executor.map(repair_container_ospf, containers))
 
 
 def select_reachable_destination(flow):
@@ -440,6 +462,15 @@ def validate_topology_snapshot(redis_client, demands):
         "last_update_unix": redis_client.get("topo:last_update_unix"),
         "_node_names": sorted(nodes),
     }
+
+
+def verify_frozen_topology(redis_client, demands, expected_hash):
+    snapshot = run([sys.executable, SNIFFER, '--once'], cwd=SNIFFER.parent, timeout=180)
+    state = validate_topology_snapshot(redis_client, demands)
+    state.pop('_node_names')
+    if state['snapshot_sha256'] != expected_hash:
+        raise RuntimeError('topology changed during static experiment: ' + snapshot.stdout)
+    return state
 
 
 def phase_paths(phase, flow_id):
@@ -1252,6 +1283,7 @@ def main(args=None):
     }
     write_checkpoint(args, experiment, cycles)
     for cycle in range(1, args.cycles + 1):
+        cycle_topology = verify_frozen_topology(redis_client, demands, topology_state['snapshot_sha256'])
         deleted = clean_srv6_encap_routes()
         redis_client.delete(*POLICY_KEYS)
         print(f"[baseline_{cycle}] deleted {deleted} SRv6 encap routes", flush=True)
@@ -1263,6 +1295,7 @@ def main(args=None):
             args,
             flows,
         )
+        verify_frozen_topology(redis_client, demands, topology_state['snapshot_sha256'])
         experiment["current_cycle"] = {
             "cycle": cycle,
             "status": "baseline_complete",
@@ -1287,6 +1320,7 @@ def main(args=None):
         ):
             raise RuntimeError(f"SRv6 ping validation failed: {ping_state}")
         te = run_external_phase(redis_client, "te", cycle, args, flows)
+        verify_frozen_topology(redis_client, demands, topology_state['snapshot_sha256'])
         improvement = (
             (te["total_mean_mbps"] - baseline["total_mean_mbps"])
             / baseline["total_mean_mbps"]
@@ -1295,6 +1329,7 @@ def main(args=None):
         cycles.append(
             {
                 "cycle": cycle,
+                "topology": cycle_topology,
                 "baseline": baseline,
                 "te": te,
                 "improvement_percent": improvement,

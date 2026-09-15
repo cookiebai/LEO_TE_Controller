@@ -16,6 +16,7 @@ REDIS_PORT = int(os.getenv("TE_REDIS_PORT", "6379"))
 POLL_INTERVAL_SECONDS = float(os.getenv("TOPO_SNIFF_INTERVAL_SECONDS", "30"))
 DEFAULT_DELAY_MS = float(os.getenv("TE_DEFAULT_DELAY_MS", "10"))
 DEFAULT_CAPACITY_MBPS = float(os.getenv("TE_DEFAULT_CAPACITY_MBPS", "16"))
+HOST_COMMAND_TIMEOUT = int(os.getenv("TOPO_HOST_COMMAND_TIMEOUT", "120"))
 
 r = redis.Redis(
     host=REDIS_HOST,
@@ -52,7 +53,7 @@ def get_containers():
 
 def get_host_interface_map():
     """Return host ifindex -> interface name."""
-    result = run_command(["ip", "-o", "link", "show"], timeout=15)
+    result = run_command(["ip", "-o", "link", "show"], timeout=HOST_COMMAND_TIMEOUT)
     mapping = {}
     if result.returncode != 0:
         return mapping
@@ -66,7 +67,7 @@ def get_host_interface_map():
 
 def get_bridge_port_status():
     """Return host bridge-port forwarding state keyed by interface name."""
-    result = run_command(["bridge", "link", "show"], timeout=15)
+    result = run_command(["bridge", "link", "show"], timeout=HOST_COMMAND_TIMEOUT)
     if result.returncode != 0:
         return {}
     status = {}
@@ -102,7 +103,7 @@ def parse_delay_ms(value, unit):
 
 def get_tc_link_parameters():
     """Read all host qdiscs once and return per-interface delay/capacity."""
-    result = run_command(["tc", "qdisc", "show"], timeout=20)
+    result = run_command(["tc", "qdisc", "show"], timeout=HOST_COMMAND_TIMEOUT)
     parameters = defaultdict(dict)
     if result.returncode != 0:
         return parameters
@@ -203,7 +204,7 @@ def sniff_topology():
     subnets = defaultdict(list)
     scan_failures = []
 
-    workers = max(1, int(os.getenv("TOPO_SNIFF_WORKERS", "4")))
+    workers = max(1, int(os.getenv("TOPO_SNIFF_WORKERS", "16")))
     with ThreadPoolExecutor(max_workers=min(workers, max(1, len(containers)))) as executor:
         futures = {
             executor.submit(

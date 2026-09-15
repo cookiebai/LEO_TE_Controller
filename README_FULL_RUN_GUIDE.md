@@ -1,6 +1,8 @@
-# OpenSN + SRv6-TE 完整运行步骤
+# OpenSN + SRv6-TE 完整运行步骤（历史吞吐量流程）
 
-更新日期：2026-09-15
+更新日期：2026-10-07
+
+> 当前普通项目入口是 `./lab.sh run --scale 25x20`（规模按实际拓扑调整）：它不再执行 Baseline/TE 吞吐量对比，而是下发 SRv6 策略、执行 PDF 清单命令、完成 Ping 与中间节点抓包，并生成 README/PCAP。本文后续的 `run_full_experiment.sh` 仅保留为历史吞吐量 benchmark 说明；通过统一入口复现时应使用显式 `./lab.sh benchmark ...`。
 
 ## 使用说明
 
