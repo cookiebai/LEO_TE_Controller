@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-10-30T01:16:08.995581+00:00",
+  "file": "leo-te-controller-merged-frr-20261030.tar.gz",
+  "bytes": 386253717,
+  "sha256": "45f037769b953bf99626342bebc4c6073e4d96210829d94fb67492cc8fe89e71",
+  "image_count_in_archive": 1,
+  "image_tag": "leo-te-controller:merged-frr-20261030",
+  "image_id": "sha256:a52974a5d032f181a845ea68aabf33e2bb060ff03ddc17584afef00cd04d6cb9",
+  "blob_sha256_verified": 40,
+  "source_archives_unchanged": {
+    "leo-te-controller-20261029.tar.gz": "afc42c31695e2a254934bd16e583c87848d17dbe90af3ff8c82c3d6bd56603d1",
+    "frr-auto66-lite-new-20261029.tar.gz": "82841f377d0f3e4430aaefa489a95f336acc570601774ad9e5a7a546f33fb370"
+  },
+  "file_preservation": {
+    "image_id": "sha256:a52974a5d032f181a845ea68aabf33e2bb060ff03ddc17584afef00cd04d6cb9",
+    "controller_entries_checked": 15586,
+    "node_entries_checked": 4124,
+    "controller_app_regular_files": 37,
+    "controller_app_unchanged": true,
+    "node_scripts_unchanged": {
+      "auto66-lite.sh": true,
+      "queue-probe.sh": true,
+      "start-frr.sh": true
+    },
+    "runtime_system_files": [
+      "etc/group",
+      "etc/gshadow",
+      "etc/ld.so.cache",
+      "etc/passwd",
+      "etc/shadow",
+      "var/cache/ldconfig/aux-cache"
+    ],
+    "conflicting_paths_backed_up": 715,
+    "failures": []
+  },
+  "unit_tests": {
+    "count": 50,
+    "result": "PASS"
+  },
+  "runtime_validation": {
+    "image_id": "sha256:a52974a5d032f181a845ea68aabf33e2bb060ff03ddc17584afef00cd04d6cb9",
+    "controller_startup": "PASS",
+    "node_controller_marker_removed": true,
+    "node_startup": "PASS",
+    "frr_elf_dependency_check": "PASS",
+    "frr_elf_objects_checked": 28
+  },
+  "docker_load_result": "Loaded image: leo-te-controller:merged-frr-20261030",
+  "docker_load_success": true,
+  "existing_running_containers_unchanged": true,
+  "existing_running_container_count": 66,
+  "system_conflict_policy": "Controller versions active; both original versions retained under /opt/leo-te-merge/originals; FRR accounts and loader caches integrated."
+}

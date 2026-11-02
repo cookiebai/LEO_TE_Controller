@@ -1,0 +1,39 @@
+# Preserve the complete supplied node filesystem, topology snapshot and original
+# startup. Task-1 deployment uses its supplied cfg unchanged. No OpenSN.
+ARG NODE_IMAGE=weixing-integration:1020
+ARG CONTROLLER_IMAGE=leo-te-controller:integration-20261021
+FROM ubuntu:22.04 AS probe-build
+RUN apt-get update && apt-get install -y --no-install-recommends gcc libc6-dev && rm -rf /var/lib/apt/lists/*
+COPY integration/udp6_probe.c /src/udp6_probe.c
+RUN gcc -O2 -Wall -Wextra -static /src/udp6_probe.c -lm -o /udp6-probe
+FROM ${CONTROLLER_IMAGE} AS controller-runtime
+FROM ${NODE_IMAGE}
+ENV DEBIAN_FRONTEND=noninteractive PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+ENV LEO_TE_IMAGE=leo-te-integrated:queue-20261027
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 redis-server docker.io ca-certificates tini util-linux \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=controller-runtime /usr/local/lib/python3.10/dist-packages/ /usr/local/lib/python3.10/dist-packages/
+COPY --from=controller-runtime /app/build/te_engine /app/build/te_engine
+COPY --from=probe-build /udp6-probe /app/bin/udp6-probe
+WORKDIR /app
+COPY python_te_solver/ /app/python_te_solver/
+COPY config/controller.yaml /app/config/controller.yaml
+COPY integration/ /app/integration/
+COPY tests/test_integration.py /app/tests/test_integration.py
+COPY tests/test_native_queues.py /app/tests/test_native_queues.py
+COPY tests/test_task1_deploy.py /app/tests/test_task1_deploy.py
+COPY README_QUEUE_INTEGRATION_20261027.md /app/README_QUEUE_INTEGRATION_20261027.md
+COPY README_FULL_DEPLOY_20261027.md /app/README_FULL_DEPLOY_20261027.md
+COPY integration/vendor/queue-20261027/auto66-lite.sh /auto66-lite.sh
+COPY integration/vendor/queue-20261027/queue-probe.sh /queue-probe-original.sh
+COPY integration/queue-probe.sh /queue-probe.sh
+COPY integration/queue_probe.py /queue-probe.py
+RUN chmod +x /auto66-lite.sh /queue-probe.sh /app/integration/entrypoint.sh && \
+    mkdir -p /output && \
+    python3 -c 'import redis, yaml, numpy, scipy, networkx' && \
+    ldd /usr/lib/frr/zebra | tee /tmp/zebra-ldd && \
+    ! grep -q 'not found' /tmp/zebra-ldd
+ENTRYPOINT ["/usr/bin/tini", "--", "/app/integration/entrypoint.sh"]
+ENV LEO_TE_IMAGE=leo-te-integrated:full-20261027
+CMD ["node"]

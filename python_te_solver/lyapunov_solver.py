@@ -16,7 +16,12 @@ class LyapunovSolver:
             self.config = yaml.safe_load(f)
         
         redis_cfg = self.config['redis']
-        self.r = redis.Redis(host=redis_cfg['host'], port=redis_cfg['port'], decode_responses=True)
+        connection = {'decode_responses': True}
+        if redis_cfg.get('unix_socket_path'):
+            connection['unix_socket_path'] = redis_cfg['unix_socket_path']
+        else:
+            connection.update(host=redis_cfg['host'], port=redis_cfg['port'])
+        self.r = redis.Redis(**connection)
         self.queue_name = redis_cfg['te_queue_name']
         
         l_cfg = self.config['lyapunov_engine']

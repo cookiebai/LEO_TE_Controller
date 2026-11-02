@@ -1,0 +1,8 @@
+{
+  "image_id": "sha256:a52974a5d032f181a845ea68aabf33e2bb060ff03ddc17584afef00cd04d6cb9",
+  "controller_startup": "PASS",
+  "node_controller_marker_removed": true,
+  "node_startup": "PASS",
+  "frr_elf_dependency_check": "PASS",
+  "frr_elf_objects_checked": 28
+}

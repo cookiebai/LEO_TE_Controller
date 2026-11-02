@@ -1,0 +1,4 @@
+[
+  {"id": "example_urllc", "src": "L0101", "dst": "L0103", "class": "class_1_urllc", "demand": 1000},
+  {"id": "example_background", "src": "L0102", "dst": "L0104", "class": "class_3_background", "demand": 4000}
+]

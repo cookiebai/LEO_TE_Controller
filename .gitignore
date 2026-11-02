@@ -11,3 +11,16 @@ results/srv6-runs/
 results/srv6-latest
 *.tmp
 *.swp
+deployment/output/
+deployment/demands.json
+deployment/results/
+
+# Generated build contexts, images, and local runtime state
+/build/
+/results/console_manual_*.log
+/deployment/merged/context/node-payload.tar
+/deployment/merged/context/merge-manifest.json
+/deployment/merged/*-rootfs.tar
+/deployment/merged/*-inventory.json
+*.tar
+*.tar.gz

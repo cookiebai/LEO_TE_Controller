@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+if [ "$#" -eq 0 ]; then set -- serve; fi
+case "$1" in
+  node)
+    shift
+    # Node containers must not inherit the controller discovery exclusion marker.
+    rm -f /run/leo-te-role
+    exec /start-frr.sh "$@"
+    ;;
+  *) exec /usr/local/bin/leo-te "$@" ;;
+esac

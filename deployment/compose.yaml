@@ -1,0 +1,16 @@
+services:
+  controller:
+    image: leo-te-controller:integration-20261021
+    build:
+      context: ..
+    init: true
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./demands.json:/input/demands.json:ro
+      - ./output:/output
+    # With measured qdisc bandwidth+delay, no fallback is necessary.
+    # For links without netem delay, append --delay-ms with an agreed value.
+    # Append --apply only when ready to send native path.cmd commands.
+    command: ["--demands", "/input/demands.json"]

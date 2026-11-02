@@ -1,0 +1,8 @@
+[
+  {"id":"row3_a","src":"L0301","dst":"L0306","class":"class_2_embb","demand":4000},
+  {"id":"row3_b","src":"L0302","dst":"L0306","class":"class_2_embb","demand":4000},
+  {"id":"row3_c","src":"L0303","dst":"L0307","class":"class_2_embb","demand":4000},
+  {"id":"row3_d","src":"L0304","dst":"L0308","class":"class_2_embb","demand":4000},
+  {"id":"row3_e","src":"L0305","dst":"L0309","class":"class_2_embb","demand":4000},
+  {"id":"row3_f","src":"L0303","dst":"L0306","class":"class_2_embb","demand":4000}
+]

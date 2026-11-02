@@ -1,0 +1,22 @@
+{
+  "image_id": "sha256:a52974a5d032f181a845ea68aabf33e2bb060ff03ddc17584afef00cd04d6cb9",
+  "controller_entries_checked": 15586,
+  "node_entries_checked": 4124,
+  "controller_app_regular_files": 37,
+  "controller_app_unchanged": true,
+  "node_scripts_unchanged": {
+    "auto66-lite.sh": true,
+    "queue-probe.sh": true,
+    "start-frr.sh": true
+  },
+  "runtime_system_files": [
+    "etc/group",
+    "etc/gshadow",
+    "etc/ld.so.cache",
+    "etc/passwd",
+    "etc/shadow",
+    "var/cache/ldconfig/aux-cache"
+  ],
+  "conflicting_paths_backed_up": 715,
+  "failures": []
+}

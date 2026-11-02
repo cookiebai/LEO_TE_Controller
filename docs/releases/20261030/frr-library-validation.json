@@ -1,0 +1,33 @@
+{
+  "checked": [
+    "/usr/lib/frr/pathd",
+    "/usr/lib/frr/pim6d",
+    "/usr/lib/frr/ripngd",
+    "/usr/lib/frr/ospf6d",
+    "/usr/lib/frr/babeld",
+    "/usr/lib/frr/ospfd",
+    "/usr/lib/frr/fpm_listener",
+    "/usr/lib/frr/pbrd",
+    "/usr/lib/frr/bgpd",
+    "/usr/lib/frr/ripd",
+    "/usr/lib/frr/eigrpd",
+    "/usr/lib/frr/isisd",
+    "/usr/lib/frr/watchfrr",
+    "/usr/lib/frr/mgmtd",
+    "/usr/lib/frr/nhrpd",
+    "/usr/lib/frr/ssd",
+    "/usr/lib/frr/pimd",
+    "/usr/lib/frr/ldpd",
+    "/usr/lib/frr/fabricd",
+    "/usr/lib/frr/staticd",
+    "/usr/lib/frr/zebra",
+    "/usr/lib/frr/bfdd",
+    "/usr/lib/frr/vrrpd",
+    "/usr/lib/frr/modules/bgpd_bmp.so",
+    "/usr/lib/frr/modules/pathd_pcep.so",
+    "/usr/lib/frr/modules/dplane_fpm_nl.so",
+    "/usr/lib/frr/modules/zebra_cumulus_mlag.so",
+    "/usr/bin/vtysh"
+  ],
+  "failures": []
+}

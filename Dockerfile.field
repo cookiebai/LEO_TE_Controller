@@ -1,0 +1,17 @@
+FROM leo-te-controller:integration-20261021
+# Standalone controller only: no node filesystem, cfg, topology or FRR startup.
+# Build context is assembled from this repository and locally built static tools.
+RUN rm -rf /app && mkdir -p /app
+WORKDIR /app
+COPY app/ /app/
+COPY bin/ /app/bin/
+COPY docker /usr/local/bin/docker
+COPY DOCKER-CLI-LICENSE /usr/share/doc/leo-te-docker-cli/LICENSE
+RUN printf '#!/bin/sh\nexec python3 -m integration.field "$@"\n' > /usr/local/bin/leo-te && \
+    chmod 755 /usr/local/bin/leo-te /usr/local/bin/docker /app/bin/* && \
+    mkdir -p /run /output && echo control > /run/leo-te-role && \
+    test ! -e /cfg.sh && python3 -c 'import redis, yaml, scipy, networkx' && \
+    /usr/local/bin/docker --version
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENTRYPOINT ["/usr/bin/tini", "--", "leo-te"]
+CMD ["serve"]

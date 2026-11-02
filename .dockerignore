@@ -1,0 +1,11 @@
+.git
+build
+results
+__pycache__
+**/__pycache__
+*.pyc
+.venv
+venv
+deployment/output
+*.tar
+*.tar.gz
